@@ -1,0 +1,519 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink API
+  description: >-
+    The Traiana Harmony CreditLink API provides real-time pre-trade and
+    post-trade credit risk management across prime-brokered, cleared, and
+    bilateral relationships. CreditLink enables limit monitoring, designation
+    notice management, tri-party limit management, and ECN limit management.
+    It integrates with exchange APIs to identify limit breaches, modify credit
+    lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+  - url: https://api.traiana.com/creditlink/v1
+    description: Traiana CreditLink Production
+paths:
+  /credit-limits:
+    get:
+      operationId: listCreditLimits
+      summary: List credit limits
+      description: >-
+        Retrieves credit limits configured across counterparty relationships
+        including prime brokered, cleared, and bilateral arrangements.
+      tags:
+        - Credit Limits
+      parameters:
+        - name: counterpartyId
+          in: query
+          schema:
+            type: string
+        - name: assetClass
+          in: query
+          schema:
+            type: string
+            enum:
+              - FX
+              - Equities
+              - EquityDerivatives
+              - ETD
+              - IRD
+        - name: relationshipType
+          in: query
+          schema:
+            type: string
+            enum:
+              - PrimeBrokered
+              - Cleared
+              - Bilateral
+      responses:
+        "200":
+          description: Successful response with credit limits
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  creditLimits:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CreditLimit"
+                  total:
+                    type: integer
+        "401":
+          description: Unauthorized
+    post:
+      operationId: createCreditLimit
+      summary: Create a credit limit
+      description: >-
+        Creates a new credit limit for a counterparty relationship.
+      tags:
+        - Credit Limits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreditLimitCreate"
+      responses:
+        "201":
+          description: Credit limit created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditLimit"
+        "400":
+          description: Invalid request
+  /credit-limits/{limitId}:
+    get:
+      operationId: getCreditLimit
+      summary: Get credit limit details
+      description: Retrieves details of a specific credit limit.
+      tags:
+        - Credit Limits
+      parameters:
+        - name: limitId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditLimit"
+        "404":
+          description: Credit limit not found
+    put:
+      operationId: updateCreditLimit
+      summary: Update a credit limit
+      description: >-
+        Modifies an existing credit limit, enabling real-time adjustment
+        of credit lines.
+      tags:
+        - Credit Limits
+      parameters:
+        - name: limitId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreditLimitUpdate"
+      responses:
+        "200":
+          description: Credit limit updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditLimit"
+        "404":
+          description: Credit limit not found
+  /credit-limits/{limitId}/breach:
+    post:
+      operationId: reportBreach
+      summary: Report a limit breach
+      description: >-
+        Reports a credit limit breach, triggering notifications and
+        optional trading termination.
+      tags:
+        - Credit Limits
+      parameters:
+        - name: limitId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BreachReport"
+      responses:
+        "201":
+          description: Breach reported
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Breach"
+  /designation-notices:
+    get:
+      operationId: listDesignationNotices
+      summary: List designation notices
+      description: >-
+        Retrieves designation notices managed through CreditLink's
+        Designation Notice Manager (DNM).
+      tags:
+        - Designation Notices
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - Active
+              - Expired
+              - Revoked
+        - name: counterpartyId
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  designationNotices:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DesignationNotice"
+                  total:
+                    type: integer
+    post:
+      operationId: createDesignationNotice
+      summary: Create a designation notice
+      description: Creates a new designation notice for clearing relationships.
+      tags:
+        - Designation Notices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DesignationNoticeCreate"
+      responses:
+        "201":
+          description: Designation notice created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DesignationNotice"
+  /utilization:
+    get:
+      operationId: getCreditUtilization
+      summary: Get credit utilization
+      description: >-
+        Retrieves real-time credit utilization across counterparty
+        relationships and asset classes.
+      tags:
+        - Utilization
+      parameters:
+        - name: counterpartyId
+          in: query
+          schema:
+            type: string
+        - name: assetClass
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  utilizations:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CreditUtilization"
+  /breaches:
+    get:
+      operationId: listBreaches
+      summary: List credit limit breaches
+      description: >-
+        Retrieves a history of credit limit breaches with details on
+        actions taken.
+      tags:
+        - Credit Limits
+      parameters:
+        - name: limitId
+          in: query
+          schema:
+            type: string
+        - name: fromDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  breaches:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Breach"
+                  total:
+                    type: integer
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+  schemas:
+    CreditLimit:
+      type: object
+      properties:
+        limitId:
+          type: string
+        counterpartyId:
+          type: string
+        counterpartyName:
+          type: string
+        assetClass:
+          type: string
+          enum:
+            - FX
+            - Equities
+            - EquityDerivatives
+            - ETD
+            - IRD
+        relationshipType:
+          type: string
+          enum:
+            - PrimeBrokered
+            - Cleared
+            - Bilateral
+        limitAmount:
+          type: number
+        currency:
+          type: string
+        currentUtilization:
+          type: number
+        utilizationPercentage:
+          type: number
+        status:
+          type: string
+          enum:
+            - Active
+            - Suspended
+            - Terminated
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CreditLimitCreate:
+      type: object
+      required:
+        - counterpartyId
+        - assetClass
+        - relationshipType
+        - limitAmount
+        - currency
+        - effectiveDate
+      properties:
+        counterpartyId:
+          type: string
+        assetClass:
+          type: string
+          enum:
+            - FX
+            - Equities
+            - EquityDerivatives
+            - ETD
+            - IRD
+        relationshipType:
+          type: string
+          enum:
+            - PrimeBrokered
+            - Cleared
+            - Bilateral
+        limitAmount:
+          type: number
+        currency:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+    CreditLimitUpdate:
+      type: object
+      properties:
+        limitAmount:
+          type: number
+        status:
+          type: string
+          enum:
+            - Active
+            - Suspended
+            - Terminated
+        expiryDate:
+          type: string
+          format: date
+    BreachReport:
+      type: object
+      required:
+        - breachAmount
+        - action
+      properties:
+        breachAmount:
+          type: number
+        description:
+          type: string
+        action:
+          type: string
+          enum:
+            - Notify
+            - SuspendTrading
+            - TerminateTrading
+    Breach:
+      type: object
+      properties:
+        breachId:
+          type: string
+        limitId:
+          type: string
+        counterpartyId:
+          type: string
+        breachAmount:
+          type: number
+        limitAmount:
+          type: number
+        utilizationAtBreach:
+          type: number
+        action:
+          type: string
+          enum:
+            - Notify
+            - SuspendTrading
+            - TerminateTrading
+        resolvedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+    DesignationNotice:
+      type: object
+      properties:
+        noticeId:
+          type: string
+        counterpartyId:
+          type: string
+        clearingMemberId:
+          type: string
+        clearingHouse:
+          type: string
+        assetClass:
+          type: string
+        status:
+          type: string
+          enum:
+            - Active
+            - Expired
+            - Revoked
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date-time
+    DesignationNoticeCreate:
+      type: object
+      required:
+        - counterpartyId
+        - clearingMemberId
+        - clearingHouse
+        - assetClass
+        - effectiveDate
+      properties:
+        counterpartyId:
+          type: string
+        clearingMemberId:
+          type: string
+        clearingHouse:
+          type: string
+        assetClass:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+    CreditUtilization:
+      type: object
+      properties:
+        counterpartyId:
+          type: string
+        counterpartyName:
+          type: string
+        assetClass:
+          type: string
+        limitAmount:
+          type: number
+        currentUtilization:
+          type: number
+        utilizationPercentage:
+          type: number
+        currency:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+security:
+  - bearerAuth: []
+  - apiKey: []

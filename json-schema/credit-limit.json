@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/traiana/refs/heads/main/json-schema/credit-limit.json",
+  "title": "Credit Limit",
+  "description": "A credit limit managed through Traiana CreditLink, representing a real-time credit boundary for a counterparty relationship across asset classes.",
+  "type": "object",
+  "properties": {
+    "limitId": {
+      "type": "string",
+      "description": "Unique identifier for the credit limit"
+    },
+    "counterpartyId": {
+      "type": "string",
+      "description": "Identifier of the counterparty"
+    },
+    "counterpartyName": {
+      "type": "string",
+      "description": "Name of the counterparty"
+    },
+    "assetClass": {
+      "type": "string",
+      "description": "Asset class the limit applies to",
+      "enum": ["FX", "Equities", "EquityDerivatives", "ETD", "IRD"]
+    },
+    "relationshipType": {
+      "type": "string",
+      "description": "Type of trading relationship",
+      "enum": ["PrimeBrokered", "Cleared", "Bilateral"]
+    },
+    "limitAmount": {
+      "type": "number",
+      "description": "Maximum credit limit amount"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code for the limit"
+    },
+    "currentUtilization": {
+      "type": "number",
+      "description": "Current utilization amount"
+    },
+    "utilizationPercentage": {
+      "type": "number",
+      "description": "Current utilization as a percentage of the limit"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the credit limit",
+      "enum": ["Active", "Suspended", "Terminated"]
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the limit becomes effective"
+    },
+    "expiryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the limit expires"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the limit was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last update"
+    }
+  },
+  "required": ["limitId", "counterpartyId", "assetClass", "relationshipType", "limitAmount", "currency", "status", "effectiveDate"]
+}

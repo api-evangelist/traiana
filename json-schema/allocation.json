@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/traiana/refs/heads/main/json-schema/allocation.json",
+  "title": "Allocation",
+  "description": "A trade allocation processed through the Traiana Harmony network, representing the distribution of a block trade to individual accounts.",
+  "type": "object",
+  "properties": {
+    "allocationId": {
+      "type": "string",
+      "description": "Unique identifier for the allocation"
+    },
+    "blockTradeId": {
+      "type": "string",
+      "description": "Identifier of the parent block trade"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Target account identifier for the allocation"
+    },
+    "instrument": {
+      "type": "string",
+      "description": "Instrument identifier or symbol"
+    },
+    "side": {
+      "type": "string",
+      "description": "Trade direction",
+      "enum": ["Buy", "Sell"]
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Allocated quantity"
+    },
+    "price": {
+      "type": "number",
+      "description": "Allocation price"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the allocation",
+      "enum": ["Pending", "Affirmed", "Confirmed", "Rejected"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the allocation was created"
+    }
+  },
+  "required": ["allocationId", "blockTradeId", "accountId", "instrument", "side", "quantity", "price", "currency", "status"]
+}

@@ -1,0 +1,102 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "traiana": "https://www.cmegroup.com/services/traiana#",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/",
+    "Trade": "traiana:Trade",
+    "Allocation": "traiana:Allocation",
+    "GiveUp": "traiana:GiveUp",
+    "CreditLimit": "traiana:CreditLimit",
+    "NettingSession": "traiana:NettingSession",
+    "Settlement": "traiana:Settlement",
+    "MatchResult": "traiana:MatchResult",
+    "Breach": "traiana:Breach",
+    "DesignationNotice": "traiana:DesignationNotice",
+    "CreditUtilization": "traiana:CreditUtilization",
+    "CompressionRun": "traiana:CompressionRun",
+    "tradeId": "traiana:tradeId",
+    "externalTradeId": "traiana:externalTradeId",
+    "assetClass": "traiana:assetClass",
+    "instrument": {
+      "@id": "traiana:instrument",
+      "@type": "@id"
+    },
+    "side": "traiana:side",
+    "quantity": {
+      "@id": "traiana:quantity",
+      "@type": "xsd:decimal"
+    },
+    "price": {
+      "@id": "traiana:price",
+      "@type": "xsd:decimal"
+    },
+    "currency": {
+      "@id": "traiana:currency",
+      "@type": "xsd:string"
+    },
+    "counterpartyId": "traiana:counterpartyId",
+    "counterpartyName": "traiana:counterpartyName",
+    "executingBrokerId": "traiana:executingBrokerId",
+    "primeBrokerId": "traiana:primeBrokerId",
+    "clientId": "traiana:clientId",
+    "tradeDate": {
+      "@id": "traiana:tradeDate",
+      "@type": "xsd:date"
+    },
+    "settlementDate": {
+      "@id": "traiana:settlementDate",
+      "@type": "xsd:date"
+    },
+    "effectiveDate": {
+      "@id": "traiana:effectiveDate",
+      "@type": "xsd:date"
+    },
+    "expiryDate": {
+      "@id": "traiana:expiryDate",
+      "@type": "xsd:date"
+    },
+    "status": "traiana:status",
+    "limitAmount": {
+      "@id": "traiana:limitAmount",
+      "@type": "xsd:decimal"
+    },
+    "currentUtilization": {
+      "@id": "traiana:currentUtilization",
+      "@type": "xsd:decimal"
+    },
+    "utilizationPercentage": {
+      "@id": "traiana:utilizationPercentage",
+      "@type": "xsd:decimal"
+    },
+    "relationshipType": "traiana:relationshipType",
+    "compressionRatio": {
+      "@id": "traiana:compressionRatio",
+      "@type": "xsd:decimal"
+    },
+    "originalTradeCount": {
+      "@id": "traiana:originalTradeCount",
+      "@type": "xsd:integer"
+    },
+    "nettedTradeCount": {
+      "@id": "traiana:nettedTradeCount",
+      "@type": "xsd:integer"
+    },
+    "payAmount": {
+      "@id": "traiana:payAmount",
+      "@type": "xsd:decimal"
+    },
+    "receiveAmount": {
+      "@id": "traiana:receiveAmount",
+      "@type": "xsd:decimal"
+    },
+    "createdAt": {
+      "@id": "traiana:createdAt",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "traiana:updatedAt",
+      "@type": "xsd:dateTime"
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}

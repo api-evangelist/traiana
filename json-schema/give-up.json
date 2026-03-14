@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/traiana/refs/heads/main/json-schema/give-up.json",
+  "title": "Give-Up",
+  "description": "A give-up message processed through the Traiana Harmony network, representing the transfer of a trade from an executing broker to a prime broker on behalf of a client.",
+  "type": "object",
+  "properties": {
+    "giveUpId": {
+      "type": "string",
+      "description": "Unique identifier for the give-up message"
+    },
+    "tradeId": {
+      "type": "string",
+      "description": "Identifier of the associated trade"
+    },
+    "executingBrokerId": {
+      "type": "string",
+      "description": "Identifier of the executing broker"
+    },
+    "primeBrokerId": {
+      "type": "string",
+      "description": "Identifier of the prime broker"
+    },
+    "clientId": {
+      "type": "string",
+      "description": "Identifier of the client"
+    },
+    "instrument": {
+      "type": "string",
+      "description": "Instrument identifier or symbol"
+    },
+    "side": {
+      "type": "string",
+      "description": "Trade direction",
+      "enum": ["Buy", "Sell"]
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Trade quantity"
+    },
+    "price": {
+      "type": "number",
+      "description": "Execution price"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the give-up",
+      "enum": ["Pending", "Accepted", "Rejected"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the give-up was submitted"
+    }
+  },
+  "required": ["giveUpId", "tradeId", "executingBrokerId", "primeBrokerId", "clientId", "instrument", "side", "quantity", "price", "currency", "status"]
+}

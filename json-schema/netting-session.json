@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/traiana/refs/heads/main/json-schema/netting-session.json",
+  "title": "Netting Session",
+  "description": "A netting session processed through Traiana NetLink, representing an aggregation and compression cycle for trades between counterparties to reduce settlement risk and optimize liquidity.",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "Unique identifier for the netting session"
+    },
+    "counterpartyIdA": {
+      "type": "string",
+      "description": "Identifier of the first counterparty"
+    },
+    "counterpartyIdB": {
+      "type": "string",
+      "description": "Identifier of the second counterparty"
+    },
+    "assetClass": {
+      "type": "string",
+      "description": "Asset class being netted"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the netting session",
+      "enum": ["Pending", "InProgress", "Completed", "Failed"]
+    },
+    "originalTradeCount": {
+      "type": "integer",
+      "description": "Number of original trades included in the session"
+    },
+    "nettedTradeCount": {
+      "type": "integer",
+      "description": "Number of netted trades produced"
+    },
+    "compressionRatio": {
+      "type": "number",
+      "description": "Ratio of compression achieved"
+    },
+    "scheduledAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled execution time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Completion timestamp"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the session was created"
+    }
+  },
+  "required": ["sessionId", "counterpartyIdA", "counterpartyIdB", "assetClass", "status"]
+}

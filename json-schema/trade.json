@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/traiana/refs/heads/main/json-schema/trade.json",
+  "title": "Trade",
+  "description": "A trade processed through the Traiana Harmony network, representing a cross-asset transaction including FX, equities, equity derivatives, and exchange-traded derivatives.",
+  "type": "object",
+  "properties": {
+    "tradeId": {
+      "type": "string",
+      "description": "Unique identifier for the trade within the Harmony network"
+    },
+    "externalTradeId": {
+      "type": "string",
+      "description": "External trade reference identifier from the submitting system"
+    },
+    "assetClass": {
+      "type": "string",
+      "description": "Asset class of the traded instrument",
+      "enum": ["FX", "Equities", "EquityDerivatives", "ETD"]
+    },
+    "instrument": {
+      "type": "string",
+      "description": "Instrument identifier or symbol"
+    },
+    "side": {
+      "type": "string",
+      "description": "Trade direction",
+      "enum": ["Buy", "Sell"]
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Trade quantity or notional amount"
+    },
+    "price": {
+      "type": "number",
+      "description": "Execution price"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code"
+    },
+    "counterpartyId": {
+      "type": "string",
+      "description": "Identifier of the counterparty"
+    },
+    "executingBrokerId": {
+      "type": "string",
+      "description": "Identifier of the executing broker"
+    },
+    "primeBrokerId": {
+      "type": "string",
+      "description": "Identifier of the prime broker"
+    },
+    "tradeDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Trade execution date"
+    },
+    "settlementDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Expected settlement date"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current processing status of the trade",
+      "enum": ["Pending", "Matched", "Confirmed", "Rejected", "Cancelled"]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the trade was submitted"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last status update"
+    }
+  },
+  "required": ["tradeId", "assetClass", "instrument", "side", "quantity", "price", "currency", "counterpartyId", "tradeDate", "status"]
+}
