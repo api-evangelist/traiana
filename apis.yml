@@ -1,0 +1,17 @@
+name: Traiana
+description: >-
+  APIs for Traiana, a post-trade processing and risk management platform
+  for foreign exchange and other financial markets, providing matching,
+  confirmation, netting, and settlement services.
+url: https://www.traiana.com
+created: "2025-01-01"
+modified: "2025-01-01"
+specificationVersion: "0.18"
+tags:
+- Fintech
+- Foreign Exchange
+- Risk Management
+- Post-Trade Processing
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
