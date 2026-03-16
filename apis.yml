@@ -103,7 +103,7 @@ common:
     type: Support
     description: 'null'
 created: '2025-01-01'
-modified: '2026-03-14'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   Traiana, part of CME Group and now operating under OSTTRA, is a leading
@@ -117,5 +117,5 @@ description: >-
   and netting and settlement orchestration through NetLink.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
