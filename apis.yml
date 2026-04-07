@@ -106,15 +106,12 @@ created: '2025-01-01'
 modified: '2026-03-16'
 position: Consumer
 description: >-
-  Traiana, part of CME Group and now operating under OSTTRA, is a leading
-  market infrastructure technology provider offering pre-trade risk monitoring
-  and automated post-trade processing for listed and OTC trading. Its Harmony
-  network connects over 1,000 firms via a cloud-based platform supporting
-  15,000 cross-asset trading relationships and handling $2 trillion in daily
-  transaction volume across FX, equities, equity derivatives, and
-  exchange-traded derivatives. Key services include trade matching and
-  confirmation, give-up messaging, credit risk management through CreditLink,
-  and netting and settlement orchestration through NetLink.
+  Traiana, part of CME Group and now operating under OSTTRA, is a leading market infrastructure
+  technology provider offering pre-trade risk monitoring and automated post-trade
+  processing for listed and OTC trading. Its Harmony network connects over 1,000 firms
+  via a cloud-based platform supporting 15,000 cross-asset trading relationships and
+  handling $2 trillion in daily transaction volume across FX, equities, equity derivatives,
+  and exchange-traded derivatives.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

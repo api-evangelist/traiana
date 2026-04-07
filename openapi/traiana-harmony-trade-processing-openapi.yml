@@ -21,7 +21,7 @@ paths:
   /trades:
     get:
       operationId: listTrades
-      summary: List trades
+      summary: Traiana List trades
       description: >-
         Retrieves a list of trades processed through the Harmony network,
         with filtering by asset class, status, counterparty, and date range.
@@ -95,7 +95,7 @@ paths:
           description: Forbidden
     post:
       operationId: submitTrade
-      summary: Submit a trade
+      summary: Traiana Submit a trade
       description: >-
         Submits a new trade into the Harmony network for processing,
         matching, and confirmation.
@@ -121,7 +121,7 @@ paths:
   /trades/{tradeId}:
     get:
       operationId: getTrade
-      summary: Get trade details
+      summary: Traiana Get trade details
       description: Retrieves detailed information about a specific trade.
       tags:
         - Trades
@@ -143,7 +143,7 @@ paths:
   /trades/{tradeId}/confirm:
     post:
       operationId: confirmTrade
-      summary: Confirm a trade
+      summary: Traiana Confirm a trade
       description: Confirms a matched trade in the Harmony network.
       tags:
         - Trades
@@ -167,7 +167,7 @@ paths:
   /allocations:
     get:
       operationId: listAllocations
-      summary: List allocations
+      summary: Traiana List allocations
       description: >-
         Retrieves trade allocations, including block-level and allocation-level
         details from executing brokers and investment managers.
@@ -209,7 +209,7 @@ paths:
                     type: integer
     post:
       operationId: submitAllocation
-      summary: Submit an allocation
+      summary: Traiana Submit an allocation
       description: >-
         Submits a trade allocation for processing through the Harmony
         network.
@@ -233,7 +233,7 @@ paths:
   /give-ups:
     get:
       operationId: listGiveUps
-      summary: List give-up messages
+      summary: Traiana List give-up messages
       description: >-
         Retrieves give-up messages between prime brokers, executing brokers,
         and their clients processed through Harmony.
@@ -272,7 +272,7 @@ paths:
                     type: integer
     post:
       operationId: submitGiveUp
-      summary: Submit a give-up
+      summary: Traiana Submit a give-up
       description: >-
         Submits a give-up message from an executing broker to a prime broker
         through the Harmony network.
@@ -296,7 +296,7 @@ paths:
   /matching:
     get:
       operationId: listMatchResults
-      summary: List match results
+      summary: Traiana List match results
       description: >-
         Retrieves trade matching results processed by the Harmony
         cross-asset matching engine.

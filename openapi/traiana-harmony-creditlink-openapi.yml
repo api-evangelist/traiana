@@ -21,7 +21,7 @@ paths:
   /credit-limits:
     get:
       operationId: listCreditLimits
-      summary: List credit limits
+      summary: Traiana List credit limits
       description: >-
         Retrieves credit limits configured across counterparty relationships
         including prime brokered, cleared, and bilateral arrangements.
@@ -68,7 +68,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createCreditLimit
-      summary: Create a credit limit
+      summary: Traiana Create a credit limit
       description: >-
         Creates a new credit limit for a counterparty relationship.
       tags:
@@ -91,7 +91,7 @@ paths:
   /credit-limits/{limitId}:
     get:
       operationId: getCreditLimit
-      summary: Get credit limit details
+      summary: Traiana Get credit limit details
       description: Retrieves details of a specific credit limit.
       tags:
         - Credit Limits
@@ -112,7 +112,7 @@ paths:
           description: Credit limit not found
     put:
       operationId: updateCreditLimit
-      summary: Update a credit limit
+      summary: Traiana Update a credit limit
       description: >-
         Modifies an existing credit limit, enabling real-time adjustment
         of credit lines.
@@ -142,7 +142,7 @@ paths:
   /credit-limits/{limitId}/breach:
     post:
       operationId: reportBreach
-      summary: Report a limit breach
+      summary: Traiana Report a limit breach
       description: >-
         Reports a credit limit breach, triggering notifications and
         optional trading termination.
@@ -170,7 +170,7 @@ paths:
   /designation-notices:
     get:
       operationId: listDesignationNotices
-      summary: List designation notices
+      summary: Traiana List designation notices
       description: >-
         Retrieves designation notices managed through CreditLink's
         Designation Notice Manager (DNM).
@@ -205,7 +205,7 @@ paths:
                     type: integer
     post:
       operationId: createDesignationNotice
-      summary: Create a designation notice
+      summary: Traiana Create a designation notice
       description: Creates a new designation notice for clearing relationships.
       tags:
         - Designation Notices
@@ -225,7 +225,7 @@ paths:
   /utilization:
     get:
       operationId: getCreditUtilization
-      summary: Get credit utilization
+      summary: Traiana Get credit utilization
       description: >-
         Retrieves real-time credit utilization across counterparty
         relationships and asset classes.
@@ -255,7 +255,7 @@ paths:
   /breaches:
     get:
       operationId: listBreaches
-      summary: List credit limit breaches
+      summary: Traiana List credit limit breaches
       description: >-
         Retrieves a history of credit limit breaches with details on
         actions taken.
