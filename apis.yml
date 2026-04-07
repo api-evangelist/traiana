@@ -6,9 +6,9 @@ apis:
     name: Traiana Harmony Trade Processing API
     tags:
       - Fintech
+      - Foreign Exchange
       - Post-Trade Processing
       - Trade Matching
-      - Foreign Exchange
     humanURL: https://www.cmegroup.com/services/traiana.html
     properties:
       - url: https://www.cmegroup.com/services/traiana.html
@@ -33,10 +33,10 @@ apis:
   - aid: traiana:harmony-creditlink
     name: Traiana Harmony CreditLink API
     tags:
-      - Fintech
-      - Risk Management
       - Credit Risk
+      - Fintech
       - Foreign Exchange
+      - Risk Management
     humanURL: https://www.cmegroup.com/services/traiana.html
     properties:
       - url: https://www.cmegroup.com/services/traiana.html
@@ -84,8 +84,8 @@ name: Traiana
 tags:
   - Fintech
   - Foreign Exchange
-  - Risk Management
   - Post-Trade Processing
+  - Risk Management
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

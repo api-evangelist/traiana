@@ -443,3 +443,7 @@ components:
 security:
   - bearerAuth: []
   - apiKey: []
+tags:
+  - name: Compression
+  - name: Netting
+  - name: Settlement

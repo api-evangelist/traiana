@@ -605,3 +605,8 @@ components:
 security:
   - bearerAuth: []
   - apiKey: []
+tags:
+  - name: Allocations
+  - name: Give-Ups
+  - name: Matching
+  - name: Trades

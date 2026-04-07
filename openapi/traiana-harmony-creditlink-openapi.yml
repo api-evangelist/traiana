@@ -517,3 +517,7 @@ components:
 security:
   - bearerAuth: []
   - apiKey: []
+tags:
+  - name: Credit Limits
+  - name: Designation Notices
+  - name: Utilization
