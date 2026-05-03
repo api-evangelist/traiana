@@ -1,0 +1,86 @@
+vocabulary: 1.0.0
+info:
+  provider: Traiana
+  description: Vocabulary for the Traiana Harmony post-trade processing network covering trade lifecycle, credit risk, netting, and settlement across FX, equities, and derivatives markets.
+  created: '2026-05-03'
+  modified: '2026-05-03'
+operational:
+  apis:
+    - name: Traiana Harmony Trade Processing API
+      namespace: traiana-trade-processing
+      status: active
+    - name: Traiana Harmony CreditLink API
+      namespace: traiana-creditlink
+      status: active
+    - name: Traiana Harmony NetLink API
+      namespace: traiana-netlink
+      status: active
+  resources:
+    - name: trades
+      description: Cross-asset trades submitted for post-trade processing through the Harmony network.
+    - name: allocations
+      description: Block trade allocation messages splitting executed trades across funds or accounts.
+    - name: give-ups
+      description: Give-up messages transferring trade execution responsibilities between prime brokers and executing brokers.
+    - name: match-results
+      description: Results of the bilateral trade matching process confirming trade terms between counterparties.
+    - name: credit-limits
+      description: Pre-trade and post-trade credit limits between counterparties for risk management.
+    - name: breaches
+      description: Credit limit breach events requiring risk management action.
+    - name: designation-notices
+      description: Designation notices for the Designation Notice Manager (DNM) in CreditLink.
+    - name: netting-sessions
+      description: Intraday netting sessions that net bilateral FX transactions to reduce settlement obligations.
+    - name: settlements
+      description: Settlement instructions generated from netting or trade confirmation.
+    - name: compression-runs
+      description: Trade compression exercises that reduce notional exposure and counterparty count.
+domain:
+  terms:
+    - term: Harmony Network
+      definition: Traiana's cloud-based post-trade processing network connecting over 1,000 financial firms.
+    - term: Post-Trade Processing
+      definition: The set of activities following trade execution including matching, confirmation, allocation, reporting, and settlement.
+    - term: Trade Matching
+      definition: The bilateral comparison of trade details between counterparties to confirm agreement on terms.
+    - term: Trade Confirmation
+      definition: The formal acknowledgment by both counterparties that a trade's terms have been matched and agreed.
+    - term: Trade Allocation
+      definition: The process of splitting a block trade into smaller allocations for individual fund accounts.
+    - term: Give-Up
+      definition: A trade processing arrangement where an executing broker's trades are transferred to a prime broker.
+    - term: CreditLink
+      definition: Traiana's real-time credit risk management service for managing bilateral counterparty credit limits.
+    - term: DNM
+      definition: Designation Notice Manager — CreditLink component managing credit designation notices.
+    - term: TPL
+      definition: Tri-Party Limit Manager — CreditLink component managing tri-party credit arrangements.
+    - term: ELM
+      definition: ECN Limit Manager — CreditLink component managing credit limits on electronic trading platforms.
+    - term: NetLink
+      definition: Traiana's netting and settlement orchestration service for reducing FX settlement obligations.
+    - term: Intraday Netting
+      definition: On-demand netting of FX transactions during the trading day to reduce settlement risk.
+    - term: PvP Settlement
+      definition: Payment versus Payment settlement ensuring simultaneous exchange of currencies to eliminate settlement risk.
+    - term: Trade Compression
+      definition: Portfolio optimization process that reduces the number and notional size of outstanding trades.
+    - term: STP
+      definition: Straight-Through Processing — automated processing of trades from execution to settlement without manual intervention.
+    - term: Settlement Risk
+      definition: The risk that one party to a trade delivers without receiving the corresponding payment.
+    - term: OSTTRA
+      definition: Post-trade services company formed by CME Group and IHS Markit, operating Traiana services.
+  tags:
+    - Credit Risk
+    - Equities
+    - Fintech
+    - Foreign Exchange
+    - Netting
+    - Post-Trade Processing
+    - Risk Management
+    - Settlement
+    - STP
+    - Trade Compression
+    - Trade Matching

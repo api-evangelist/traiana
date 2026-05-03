@@ -1,0 +1,35 @@
+{
+  "trades": [
+    {
+      "tradeId": "TRD-20260503-001234",
+      "assetClass": "FX",
+      "instrument": "USD/EUR",
+      "tradeDate": "2026-05-03",
+      "settlementDate": "2026-05-05",
+      "quantity": 1000000,
+      "price": 0.9234,
+      "notionalCurrency": "USD",
+      "notionalAmount": 1000000,
+      "counterpartyId": "CPTY-BANK-001",
+      "status": "Matched",
+      "matchTimestamp": "2026-05-03T09:15:32Z"
+    },
+    {
+      "tradeId": "TRD-20260503-001235",
+      "assetClass": "Equities",
+      "instrument": "AAPL US Equity",
+      "tradeDate": "2026-05-03",
+      "settlementDate": "2026-05-06",
+      "quantity": 5000,
+      "price": 198.45,
+      "notionalCurrency": "USD",
+      "notionalAmount": 992250,
+      "counterpartyId": "CPTY-BROKER-002",
+      "status": "Confirmed",
+      "matchTimestamp": "2026-05-03T10:02:17Z"
+    }
+  ],
+  "total": 2,
+  "page": 1,
+  "perPage": 50
+}

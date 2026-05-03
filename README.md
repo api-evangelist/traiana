@@ -1,87 +1,98 @@
-# Traiana (traiana)
-Traiana, part of CME Group and now operating under OSTTRA, is a leading market infrastructure technology provider offering pre-trade risk monitoring and automated post-trade processing for listed and OTC trading. Its Harmony network connects over 1,000 firms via a cloud-based platform supporting 15,000 cross-asset trading relationships and handling $2 trillion in daily transaction volume across FX, equities, equity derivatives, and exchange-traded derivatives. Key services include trade matching and confirmation, give-up messaging, credit risk management through CreditLink, and netting and settlement orchestration through NetLink.
+# Traiana
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/traiana/refs/heads/main/apis.yml)
+Traiana, part of CME Group and now operating under OSTTRA, is a leading market infrastructure technology provider offering pre-trade risk monitoring and automated post-trade processing for listed and OTC trading. Its Harmony network connects over 1,000 firms via a cloud-based platform supporting 15,000 cross-asset trading relationships and handling $2 trillion in daily transaction volume across FX, equities, equity derivatives, and exchange-traded derivatives.
 
-## Scope
-
-- **Type:** Index 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
-
-## Tags:
-
- - Fintech, Foreign Exchange, Risk Management, Post-Trade Processing
-
-## Timestamps
-
-- **Created:** 2025-01-01 
-- **Modified:** 2026-03-16 
+**Website:** https://osttra.com/  
+**Documentation:** https://www.cmegroup.com/services/traiana.html
 
 ## APIs
 
 ### Traiana Harmony Trade Processing API
-The Traiana Harmony Trade Processing API provides cross-asset post-trade processing capabilities through the Harmony network. It enables automated trade allocation, matching, confirmation, give-up messaging, and reporting across FX, equities, equity derivatives, and exchange-traded derivatives. Harmony connects over 1,000 firms and supports 15,000 cross-asset trading relationships, handling $2 trillion in daily transaction volume.
 
-**Human URL:** [https://www.cmegroup.com/services/traiana.html](https://www.cmegroup.com/services/traiana.html)
+Cross-asset post-trade processing for trade allocation, matching, confirmation, give-up messaging, and reporting.
 
-
-#### Tags:
-
- - Fintech, Post-Trade Processing, Trade Matching, Foreign Exchange
-
-#### Properties
-
-- [Documentation](https://www.cmegroup.com/services/traiana.html)
-- [OpenAPI](openapi/traiana-harmony-trade-processing-openapi.yml)
-- [JSONSchema](json-schema/trade.json)
-- [JSONSchema](json-schema/allocation.json)
-- [JSONSchema](json-schema/give-up.json)
-- [JSONLD](json-ld/traiana-context.jsonld)
+- **OpenAPI:** [openapi/traiana-harmony-trade-processing-openapi.yml](openapi/traiana-harmony-trade-processing-openapi.yml)
 
 ### Traiana Harmony CreditLink API
-The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink is composed of the Designation Notice Manager (DNM), Tri-Party Limit Manager (TPL), and ECN Limit Manager (ELM), enabling limit monitoring, breach detection, credit line modification, and trading termination in real time through integration with exchange APIs.
 
-**Human URL:** [https://www.cmegroup.com/services/traiana.html](https://www.cmegroup.com/services/traiana.html)
+Real-time pre-trade and post-trade credit risk management with limit monitoring, breach detection, and designation notices.
 
-
-#### Tags:
-
- - Fintech, Risk Management, Credit Risk, Foreign Exchange
-
-#### Properties
-
-- [Documentation](https://www.cmegroup.com/services/traiana.html)
-- [OpenAPI](openapi/traiana-harmony-creditlink-openapi.yml)
-- [JSONSchema](json-schema/credit-limit.json)
-- [JSONLD](json-ld/traiana-context.jsonld)
+- **OpenAPI:** [openapi/traiana-harmony-creditlink-openapi.yml](openapi/traiana-harmony-creditlink-openapi.yml)
 
 ### Traiana Harmony NetLink API
-The Traiana Harmony NetLink API provides netting, settlement orchestration, and trade compression services. NetLink enables counterparties to perform on-demand intraday netting of FX transactions, pre-settlement netting for equities, and trade compression between retail brokers and executing brokers. It reduces settlement risk and optimizes intraday liquidity through PvP settlement orchestration, including same-day settlement.
 
-**Human URL:** [https://www.cmegroup.com/services/traiana.html](https://www.cmegroup.com/services/traiana.html)
+Netting, settlement orchestration, and trade compression for FX and equities.
 
+- **OpenAPI:** [openapi/traiana-harmony-netlink-openapi.yml](openapi/traiana-harmony-netlink-openapi.yml)
 
-#### Tags:
+## Artifacts
 
- - Fintech, Netting, Settlement, Trade Compression
+### OpenAPI Specs
 
-#### Properties
+| Spec | Description |
+|------|-------------|
+| [traiana-harmony-trade-processing-openapi.yml](openapi/traiana-harmony-trade-processing-openapi.yml) | Trade allocation, matching, and confirmation |
+| [traiana-harmony-creditlink-openapi.yml](openapi/traiana-harmony-creditlink-openapi.yml) | Credit limit management and breach monitoring |
+| [traiana-harmony-netlink-openapi.yml](openapi/traiana-harmony-netlink-openapi.yml) | Netting sessions, settlement, and compression |
 
-- [Documentation](https://www.cmegroup.com/services/traiana.html)
-- [OpenAPI](openapi/traiana-harmony-netlink-openapi.yml)
-- [JSONSchema](json-schema/netting-session.json)
-- [JSONSchema](json-schema/settlement.json)
-- [JSONLD](json-ld/traiana-context.jsonld)
+### Spectral Rules
 
-## Common Properties
+| File | Description |
+|------|-------------|
+| [traiana-rules.yml](rules/traiana-rules.yml) | Spectral ruleset enforcing Traiana API conventions |
 
-- [Documentation](https://www.cmegroup.com/services/traiana.html)
-- [Documentation](https://osttra.com/services/post-trade-processing/trade-processing/)
-- [Support](https://osttra.com/support/)
+### Naftiko Capabilities
+
+#### Shared Definitions
+
+| File | Description |
+|------|-------------|
+| [shared/harmony-trade-processing.yaml](capabilities/shared/harmony-trade-processing.yaml) | Per-API consumed definition for Trade Processing |
+| [shared/harmony-creditlink.yaml](capabilities/shared/harmony-creditlink.yaml) | Per-API consumed definition for CreditLink |
+| [shared/harmony-netlink.yaml](capabilities/shared/harmony-netlink.yaml) | Per-API consumed definition for NetLink |
+
+#### Workflow Capabilities
+
+| File | Description |
+|------|-------------|
+| [post-trade-processing.yaml](capabilities/post-trade-processing.yaml) | Unified post-trade workflow — trades, credit, netting, settlement (14 tools) |
+
+### JSON Schemas
+
+| File | Description |
+|------|-------------|
+| [trade.json](json-schema/trade.json) | Trade entity schema |
+| [allocation.json](json-schema/allocation.json) | Trade allocation schema |
+| [give-up.json](json-schema/give-up.json) | Give-up message schema |
+| [netting-session.json](json-schema/netting-session.json) | Netting session schema |
+| [settlement.json](json-schema/settlement.json) | Settlement instruction schema |
+| [credit-limit.json](json-schema/credit-limit.json) | Credit limit schema |
+
+### JSON Structure
+
+| File | Description |
+|------|-------------|
+| [traiana-trade-structure.json](json-structure/traiana-trade-structure.json) | Structure documentation for trade objects |
+
+### JSON-LD
+
+| File | Description |
+|------|-------------|
+| [traiana-context.jsonld](json-ld/traiana-context.jsonld) | JSON-LD context for Traiana linked data semantics |
+
+### Examples
+
+| File | Description |
+|------|-------------|
+| [traiana-list-trades-example.json](examples/traiana-list-trades-example.json) | Example response for GET /trades |
+| [traiana-get-credit-utilization-example.json](examples/traiana-get-credit-utilization-example.json) | Example response for GET /utilization |
+
+### Vocabulary
+
+| File | Description |
+|------|-------------|
+| [traiana-vocabulary.yml](vocabulary/traiana-vocabulary.yml) | Domain vocabulary for post-trade processing concepts |
 
 ## Maintainers
 
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Kin Lane** (kin@apievangelist.com)

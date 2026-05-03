@@ -1,0 +1,23 @@
+{
+  "counterpartyId": "CPTY-BANK-001",
+  "totalLimit": 50000000,
+  "currency": "USD",
+  "utilized": 12500000,
+  "available": 37500000,
+  "utilizationPercent": 25.0,
+  "breachThreshold": 90.0,
+  "limitType": "PrimeBrokered",
+  "asOf": "2026-05-03T12:00:00Z",
+  "breakdowns": [
+    {
+      "assetClass": "FX",
+      "utilized": 8000000,
+      "limit": 30000000
+    },
+    {
+      "assetClass": "Equities",
+      "utilized": 4500000,
+      "limit": 20000000
+    }
+  ]
+}

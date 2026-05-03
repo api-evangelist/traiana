@@ -1,0 +1,309 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Traiana Post-Trade Processing"
+  description: "Unified workflow capability for post-trade lifecycle management combining Harmony Trade Processing, CreditLink, and NetLink APIs. Designed for back-office teams, risk managers, and operations staff managing cross-asset trade processing across FX, equities, equity derivatives, and ETD markets."
+  tags:
+    - Credit Risk
+    - Fintech
+    - Foreign Exchange
+    - Netting
+    - Post-Trade Processing
+    - Settlement
+    - Trade Compression
+    - Trade Matching
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TRAIANA_API_KEY: TRAIANA_API_KEY
+
+capability:
+  consumes:
+    - import: traiana-trade-processing
+      location: ./shared/harmony-trade-processing.yaml
+    - import: traiana-creditlink
+      location: ./shared/harmony-creditlink.yaml
+    - import: traiana-netlink
+      location: ./shared/harmony-netlink.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: traiana-post-trade-api
+      description: "Unified REST API for Traiana post-trade processing, credit risk, netting, and settlement operations."
+      resources:
+        - path: /v1/trades
+          name: trades
+          description: "Trade submission and lifecycle management."
+          operations:
+            - method: GET
+              name: list-trades
+              description: "List trades processed through the Harmony network."
+              call: "traiana-trade-processing.list-trades"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+            - method: POST
+              name: submit-trade
+              description: "Submit a trade for post-trade processing."
+              call: "traiana-trade-processing.submit-trade"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/allocations
+          name: allocations
+          description: "Trade allocation management."
+          operations:
+            - method: GET
+              name: list-allocations
+              description: "List trade allocations."
+              call: "traiana-trade-processing.list-allocations"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+            - method: POST
+              name: submit-allocation
+              description: "Submit a trade allocation."
+              call: "traiana-trade-processing.submit-allocation"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/match-results
+          name: match-results
+          description: "Trade matching results."
+          operations:
+            - method: GET
+              name: list-match-results
+              description: "List trade matching results."
+              call: "traiana-trade-processing.list-match-results"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+
+        - path: /v1/credit-limits
+          name: credit-limits
+          description: "Credit limit management and monitoring."
+          operations:
+            - method: GET
+              name: list-credit-limits
+              description: "List credit limits."
+              call: "traiana-creditlink.list-credit-limits"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+            - method: POST
+              name: create-credit-limit
+              description: "Create a new credit limit."
+              call: "traiana-creditlink.create-credit-limit"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/credit-utilization
+          name: credit-utilization
+          description: "Current credit utilization."
+          operations:
+            - method: GET
+              name: get-credit-utilization
+              description: "Get current credit utilization."
+              call: "traiana-creditlink.get-credit-utilization"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/netting-sessions
+          name: netting-sessions
+          description: "Intraday netting sessions."
+          operations:
+            - method: GET
+              name: list-netting-sessions
+              description: "List netting sessions."
+              call: "traiana-netlink.list-netting-sessions"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+            - method: POST
+              name: create-netting-session
+              description: "Create a netting session."
+              call: "traiana-netlink.create-netting-session"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/settlements
+          name: settlements
+          description: "Settlement instruction management."
+          operations:
+            - method: GET
+              name: list-settlements
+              description: "List settlement instructions."
+              call: "traiana-netlink.list-settlements"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+
+        - path: /v1/compression-runs
+          name: compression-runs
+          description: "Trade compression runs."
+          operations:
+            - method: GET
+              name: list-compression-runs
+              description: "List compression runs."
+              call: "traiana-netlink.list-compression-runs"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+            - method: POST
+              name: create-compression-run
+              description: "Create a new compression run."
+              call: "traiana-netlink.create-compression-run"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: traiana-post-trade-mcp
+      transport: http
+      description: "MCP server for AI-assisted Traiana post-trade processing, risk management, and settlement operations."
+      tools:
+        - name: list-trades
+          description: "List trades processed through the Harmony network with filtering by asset class and status."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-trade-processing.list-trades"
+          outputParameters:
+            - type: array
+              mapping: "$."
+
+        - name: submit-trade
+          description: "Submit a new trade for post-trade processing through the Harmony network."
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "traiana-trade-processing.submit-trade"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-trade
+          description: "Get details of a specific trade including its matching status and lifecycle state."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-trade-processing.get-trade"
+          with:
+            tradeId: "tools.tradeId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: confirm-trade
+          description: "Confirm a matched trade to complete the confirmation workflow."
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "traiana-trade-processing.confirm-trade"
+          with:
+            tradeId: "tools.tradeId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-allocations
+          description: "List trade allocations for block trade splitting and reporting."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-trade-processing.list-allocations"
+          outputParameters:
+            - type: array
+              mapping: "$."
+
+        - name: list-match-results
+          description: "List trade matching results to monitor confirmation status."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-trade-processing.list-match-results"
+          outputParameters:
+            - type: array
+              mapping: "$."
+
+        - name: list-credit-limits
+          description: "List all credit limits across prime-brokered, cleared, and bilateral counterparty relationships."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-creditlink.list-credit-limits"
+          outputParameters:
+            - type: array
+              mapping: "$."
+
+        - name: get-credit-utilization
+          description: "Get current credit utilization showing available headroom across all counterparties."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-creditlink.get-credit-utilization"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-credit-breaches
+          description: "List credit limit breach events for risk oversight."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-creditlink.list-credit-limit-breaches"
+          outputParameters:
+            - type: array
+              mapping: "$."
+
+        - name: create-netting-session
+          description: "Create an intraday netting session to reduce bilateral settlement obligations."
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "traiana-netlink.create-netting-session"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-netting-results
+          description: "Get results of a completed netting session showing net positions and settlement obligations."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-netlink.get-netting-results"
+          with:
+            sessionId: "tools.sessionId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-settlements
+          description: "List settlement instructions for payment and delivery scheduling."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "traiana-netlink.list-settlements"
+          outputParameters:
+            - type: array
+              mapping: "$."
+
+        - name: create-compression-run
+          description: "Initiate a trade compression run to reduce notional exposure and counterparty count."
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "traiana-netlink.create-compression-run"
+          outputParameters:
+            - type: object
+              mapping: "$."

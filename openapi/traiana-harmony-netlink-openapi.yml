@@ -20,7 +20,7 @@ paths:
   /netting-sessions:
     get:
       operationId: listNettingSessions
-      summary: Traiana List netting sessions
+      summary: List Netting Sessions
       description: >-
         Retrieves netting sessions including on-demand intraday netting
         runs and scheduled pre-settlement netting cycles.
@@ -68,7 +68,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createNettingSession
-      summary: Traiana Create a netting session
+      summary: Create a Netting Session
       description: >-
         Initiates an on-demand netting session to aggregate and compress
         trades between counterparties.
@@ -92,7 +92,7 @@ paths:
   /netting-sessions/{sessionId}:
     get:
       operationId: getNettingSession
-      summary: Traiana Get netting session details
+      summary: Get Netting Session Details
       description: Retrieves details of a specific netting session including results.
       tags:
         - Netting
@@ -114,7 +114,7 @@ paths:
   /netting-sessions/{sessionId}/results:
     get:
       operationId: getNettingResults
-      summary: Traiana Get netting results
+      summary: Get Netting Results
       description: >-
         Retrieves the compressed trade results from a completed
         netting session.
@@ -149,7 +149,7 @@ paths:
   /settlements:
     get:
       operationId: listSettlements
-      summary: Traiana List settlement instructions
+      summary: List Settlement Instructions
       description: >-
         Retrieves settlement instructions generated from netting sessions
         for PvP settlement orchestration.
@@ -191,7 +191,7 @@ paths:
   /settlements/{settlementId}:
     get:
       operationId: getSettlement
-      summary: Traiana Get settlement details
+      summary: Get Settlement Details
       description: Retrieves details of a specific settlement instruction.
       tags:
         - Settlement
@@ -213,7 +213,7 @@ paths:
   /compression-runs:
     get:
       operationId: listCompressionRuns
-      summary: Traiana List compression runs
+      summary: List Compression Runs
       description: >-
         Retrieves trade compression runs that aggregate trades for
         each currency pair at user-defined intervals.
@@ -249,7 +249,7 @@ paths:
                     type: integer
     post:
       operationId: createCompressionRun
-      summary: Traiana Create a compression run
+      summary: Create a Compression Run
       description: >-
         Initiates a trade compression run to aggregate trades by
         currency pair.

@@ -102,8 +102,12 @@ common:
     name: OSTTRA Support
     type: Support
     description: 'null'
+  - type: Spectral
+    url: rules/traiana-rules.yml
+  - type: Vocabulary
+    url: vocabulary/traiana-vocabulary.yml
 created: '2025-01-01'
-modified: '2026-03-16'
+modified: '2026-05-03'
 position: Consumer
 description: >-
   Traiana, part of CME Group and now operating under OSTTRA, is a leading market infrastructure
