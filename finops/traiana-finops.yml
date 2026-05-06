@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,143 +9,74 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Traiana
 providerId: traiana
-publisherName: Traiana
-serviceCategory: API
+publisherName: CME Group Inc.
+serviceCategory: Post-Trade Network
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Fintech
-  - Foreign Exchange
   - Post-Trade Processing
-  - Risk Management
+  - Foreign Exchange
+  - Fintech
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Traiana API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: 'FinOps shape for Traiana: contracted post-trade network fees billed by CME Group, typically
+  scaled by message volume, asset class, and counterparty connections. No public meter rates are published;
+  this artifact captures structural meters.'
+sources:
+  - https://www.cmegroup.com/services/traiana.html
+notes: Pricing not publicly retrievable; meters are descriptive and unpriced.
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Contracted Per-Message + Connectivity Fee
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
     - Usage
     - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Traiana
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Post-Trade Network
   ProviderName: Traiana
-  PublisherName: Traiana
-  InvoiceIssuerName: Traiana
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: CME Group Inc.
+  InvoiceIssuerName: CME Group Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: post_trade_messages
+    description: Count of post-trade messages (matches, allocations, novations, give-ups) processed through
+      the Traiana network.
+    unit: message
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - asset_class
+      - service
+      - counterparty
+  - name: counterparty_connections
+    description: Active counterparty connections / sessions enabled on the network for the institution.
+    unit: connection-month
+    aggregation: avg
+    dimensions:
+      - asset_class
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+  - name: connectivity_fee
+    description: Recurring network connectivity / membership fee separate from per-message pricing.
+    unit: month
     aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Traiana Harmony Trade Processing API
-    baseURL: ''
-    tags:
-      - Fintech
-      - Foreign Exchange
-      - Post-Trade Processing
-      - Trade Matching
-    serviceName: Traiana Harmony Trade Processing API
-    serviceCategory: API
-  - name: Traiana Harmony CreditLink API
-    baseURL: ''
-    tags:
-      - Credit Risk
-      - Fintech
-      - Foreign Exchange
-      - Risk Management
-    serviceName: Traiana Harmony CreditLink API
-    serviceCategory: API
-  - name: Traiana Harmony NetLink API
-    baseURL: ''
-    tags:
-      - Fintech
-      - Netting
-      - Settlement
-      - Trade Compression
-    serviceName: Traiana Harmony NetLink API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+principles:
+  - name: Visibility
+    description: Reconcile the monthly CME Group invoice against your message logs by service line (FX
+      Match, Harmony, etc.); request a per-asset-class breakdown from the relationship manager.
+  - name: Allocation
+    description: Allocate fees to the trading desk / asset class generating the post-trade volume; tag
+      messages with the originating book or strategy.
+  - name: Optimization
+    description: Right-size connected counterparties to those actually trading; consolidate redundant
+      sessions; review service-line subscriptions (give-up, allocations, risk) annually against active
+      use.
+  - name: Accountability
+    description: Operations / middle-office head owns Traiana costs and the network agreement; trading
+      desks are accountable for the volume they generate.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
