@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Traiana Harmony Trade Processing API — Give-Ups
+  description: 'Traiana Harmony Trade Processing API — Give-Ups. 2 operations. Lead operation: List Give-Up Messages. Self-contained
+    Naftiko capability covering one Traiana business surface.'
+  tags:
+  - Traiana
+  - Give-Ups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRAIANA_API_KEY: TRAIANA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: harmony-trade-processing-give-ups
+    baseUri: https://api.traiana.com/harmony/v1
+    description: Traiana Harmony Trade Processing API — Give-Ups business capability. Self-contained, no shared references.
+    resources:
+    - name: give-ups
+      path: /give-ups
+      operations:
+      - name: listgiveups
+        method: GET
+        description: List Give-Up Messages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+        - name: primeBrokerId
+          in: query
+          type: string
+        - name: executingBrokerId
+          in: query
+          type: string
+      - name: submitgiveup
+        method: POST
+        description: Submit a Give-Up
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRAIANA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: harmony-trade-processing-give-ups-rest
+    port: 8080
+    description: REST adapter for Traiana Harmony Trade Processing API — Give-Ups. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/give-ups
+      name: give-ups
+      description: REST surface for give-ups.
+      operations:
+      - method: GET
+        name: listgiveups
+        description: List Give-Up Messages
+        call: harmony-trade-processing-give-ups.listgiveups
+        with:
+          status: rest.status
+          primeBrokerId: rest.primeBrokerId
+          executingBrokerId: rest.executingBrokerId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: submitgiveup
+        description: Submit a Give-Up
+        call: harmony-trade-processing-give-ups.submitgiveup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: harmony-trade-processing-give-ups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Traiana Harmony Trade Processing API — Give-Ups. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-give-up-messages
+      description: List Give-Up Messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: harmony-trade-processing-give-ups.listgiveups
+      with:
+        status: tools.status
+        primeBrokerId: tools.primeBrokerId
+        executingBrokerId: tools.executingBrokerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: submit-give-up
+      description: Submit a Give-Up
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: harmony-trade-processing-give-ups.submitgiveup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
