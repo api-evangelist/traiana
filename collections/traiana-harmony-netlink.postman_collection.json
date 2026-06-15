@@ -1,0 +1,1071 @@
+{
+  "item": [
+    {
+      "id": "e671c657-171b-4abb-97a4-322d1f22d076",
+      "name": "Compression",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c070d861-15cb-4c5f-92c0-6a494228162a",
+          "name": "List Compression Runs",
+          "request": {
+            "name": "List Compression Runs",
+            "description": {
+              "content": "Retrieves trade compression runs that aggregate trades for each currency pair at user-defined intervals.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compression-runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a589260-0372-4f82-a7aa-fbd93fa82aa5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compression-runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"compressionRuns\": [\n    {\n      \"runId\": \"string\",\n      \"counterpartyIdA\": \"string\",\n      \"counterpartyIdB\": \"string\",\n      \"status\": \"InProgress\",\n      \"intervalMinutes\": 3066,\n      \"currencyPairs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"originalTradeCount\": 1375,\n      \"compressedTradeCount\": 8299,\n      \"scheduledAt\": \"2015-05-17T00:05:34.463Z\",\n      \"completedAt\": \"1957-06-21T13:50:25.835Z\"\n    },\n    {\n      \"runId\": \"string\",\n      \"counterpartyIdA\": \"string\",\n      \"counterpartyIdB\": \"string\",\n      \"status\": \"Completed\",\n      \"intervalMinutes\": 4331,\n      \"currencyPairs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"originalTradeCount\": 1131,\n      \"compressedTradeCount\": 5475,\n      \"scheduledAt\": \"1964-09-26T19:53:35.634Z\",\n      \"completedAt\": \"2007-11-05T02:19:16.982Z\"\n    }\n  ],\n  \"total\": 1480\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8176d787-3e99-43eb-a510-4089b12ca950",
+          "name": "Create a Compression Run",
+          "request": {
+            "name": "Create a Compression Run",
+            "description": {
+              "content": "Initiates a trade compression run to aggregate trades by currency pair.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compression-runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"counterpartyIdA\": \"<string>\",\n  \"counterpartyIdB\": \"<string>\",\n  \"intervalMinutes\": \"<integer>\",\n  \"currencyPairs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c800b0b-8bd3-434d-be7b-75ae91195f4e",
+              "name": "Compression run created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compression-runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyIdA\": \"<string>\",\n  \"counterpartyIdB\": \"<string>\",\n  \"intervalMinutes\": \"<integer>\",\n  \"currencyPairs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"runId\": \"string\",\n  \"counterpartyIdA\": \"string\",\n  \"counterpartyIdB\": \"string\",\n  \"status\": \"InProgress\",\n  \"intervalMinutes\": 7690,\n  \"currencyPairs\": [\n    \"string\",\n    \"string\"\n  ],\n  \"originalTradeCount\": 7913,\n  \"compressedTradeCount\": 845,\n  \"scheduledAt\": \"1987-11-26T01:23:20.674Z\",\n  \"completedAt\": \"1955-05-08T13:08:31.884Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6ca071c3-92bc-4396-a94a-859cb26e1c7f",
+      "name": "Netting",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7159673-478f-4801-b17c-e1ffb5249229",
+          "name": "List Netting Sessions",
+          "request": {
+            "name": "List Netting Sessions",
+            "description": {
+              "content": "Retrieves netting sessions including on-demand intraday netting runs and scheduled pre-settlement netting cycles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "netting-sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc38f256-d587-4ee2-82e5-c32ee2be8492",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "netting-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nettingSessions\": [\n    {\n      \"sessionId\": \"string\",\n      \"counterpartyIdA\": \"string\",\n      \"counterpartyIdB\": \"string\",\n      \"assetClass\": \"string\",\n      \"status\": \"Failed\",\n      \"originalTradeCount\": 1963,\n      \"nettedTradeCount\": 8423,\n      \"compressionRatio\": 8556.417429535955,\n      \"scheduledAt\": \"1976-12-22T14:07:38.658Z\",\n      \"completedAt\": \"1950-06-15T15:46:22.994Z\",\n      \"createdAt\": \"2015-07-30T21:05:29.972Z\"\n    },\n    {\n      \"sessionId\": \"string\",\n      \"counterpartyIdA\": \"string\",\n      \"counterpartyIdB\": \"string\",\n      \"assetClass\": \"string\",\n      \"status\": \"Completed\",\n      \"originalTradeCount\": 7900,\n      \"nettedTradeCount\": 6220,\n      \"compressionRatio\": 8806.458605158226,\n      \"scheduledAt\": \"1947-02-16T09:43:00.906Z\",\n      \"completedAt\": \"2008-11-28T18:58:36.604Z\",\n      \"createdAt\": \"1946-08-29T05:23:00.875Z\"\n    }\n  ],\n  \"total\": 8612\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16ceae2d-cfc2-42f5-8fc2-cb054dd07e45",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "netting-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24744feb-8a4b-47d6-8fe9-b6e6d11f3d5b",
+          "name": "Create a Netting Session",
+          "request": {
+            "name": "Create a Netting Session",
+            "description": {
+              "content": "Initiates an on-demand netting session to aggregate and compress trades between counterparties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "netting-sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"counterpartyIdA\": \"<string>\",\n  \"counterpartyIdB\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"currencyPairs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4547d613-66c0-49db-acb0-69dceb050024",
+              "name": "Netting session created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "netting-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyIdA\": \"<string>\",\n  \"counterpartyIdB\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"currencyPairs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"counterpartyIdA\": \"string\",\n  \"counterpartyIdB\": \"string\",\n  \"assetClass\": \"string\",\n  \"status\": \"Failed\",\n  \"originalTradeCount\": 1758,\n  \"nettedTradeCount\": 5904,\n  \"compressionRatio\": 5168.179059272871,\n  \"scheduledAt\": \"1968-01-06T18:16:21.728Z\",\n  \"completedAt\": \"1972-04-10T01:05:38.025Z\",\n  \"createdAt\": \"1947-05-06T09:46:03.973Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cb2815a-b0db-44d8-a708-52413737b659",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "netting-sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyIdA\": \"<string>\",\n  \"counterpartyIdB\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"currencyPairs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39010c9c-28c6-429f-91c8-53fc1113ce01",
+          "name": "Get Netting Session Details",
+          "request": {
+            "name": "Get Netting Session Details",
+            "description": {
+              "content": "Retrieves details of a specific netting session including results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "netting-sessions",
+                ":sessionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4d899a0-50b8-4a6b-a10c-908b6d8676f2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "netting-sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"counterpartyIdA\": \"string\",\n  \"counterpartyIdB\": \"string\",\n  \"assetClass\": \"string\",\n  \"status\": \"Failed\",\n  \"originalTradeCount\": 1758,\n  \"nettedTradeCount\": 5904,\n  \"compressionRatio\": 5168.179059272871,\n  \"scheduledAt\": \"1968-01-06T18:16:21.728Z\",\n  \"completedAt\": \"1972-04-10T01:05:38.025Z\",\n  \"createdAt\": \"1947-05-06T09:46:03.973Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42b648b1-b198-4d1c-b462-4f3c77930395",
+              "name": "Netting session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "netting-sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e866329-73c6-42b0-89d2-6d1481a0b49d",
+          "name": "Get Netting Results",
+          "request": {
+            "name": "Get Netting Results",
+            "description": {
+              "content": "Retrieves the compressed trade results from a completed netting session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "netting-sessions",
+                ":sessionId",
+                "results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50ee8dd0-8fb0-4a44-8726-e13e8132cb24",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "netting-sessions",
+                    ":sessionId",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"netResults\": [\n    {\n      \"resultId\": \"string\",\n      \"currencyPair\": \"string\",\n      \"netAmount\": 4088.9152293492602,\n      \"direction\": \"Receive\",\n      \"originalTradeIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"settlementDate\": \"1996-01-21\"\n    },\n    {\n      \"resultId\": \"string\",\n      \"currencyPair\": \"string\",\n      \"netAmount\": 2396.049786537914,\n      \"direction\": \"Receive\",\n      \"originalTradeIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"settlementDate\": \"1985-01-03\"\n    }\n  ],\n  \"originalTradeCount\": 5053,\n  \"nettedTradeCount\": 3820,\n  \"compressionRatio\": 8074.928125075214\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "02d1285a-e077-4224-a766-62cb1d458e2a",
+      "name": "Settlement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46543913-1dfe-435a-a558-96de58f1235b",
+          "name": "List Settlement Instructions",
+          "request": {
+            "name": "List Settlement Instructions",
+            "description": {
+              "content": "Retrieves settlement instructions generated from netting sessions for PvP settlement orchestration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "settlementDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56073e91-8e25-4b9f-97ec-440a5a43cb0a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "settlementDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settlements\": [\n    {\n      \"settlementId\": \"string\",\n      \"nettingSessionId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"currencyPair\": \"string\",\n      \"payAmount\": 2373.0040149348843,\n      \"payCurrency\": \"string\",\n      \"receiveAmount\": 8.105127241576637,\n      \"receiveCurrency\": \"string\",\n      \"settlementDate\": \"1966-01-17\",\n      \"status\": \"Pending\",\n      \"settledAt\": \"2025-02-14T18:47:50.648Z\",\n      \"createdAt\": \"1991-02-21T16:03:17.861Z\"\n    },\n    {\n      \"settlementId\": \"string\",\n      \"nettingSessionId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"currencyPair\": \"string\",\n      \"payAmount\": 3464.627910206438,\n      \"payCurrency\": \"string\",\n      \"receiveAmount\": 649.2465728293417,\n      \"receiveCurrency\": \"string\",\n      \"settlementDate\": \"1954-11-24\",\n      \"status\": \"Pending\",\n      \"settledAt\": \"1975-07-14T05:36:44.232Z\",\n      \"createdAt\": \"1969-01-02T02:41:46.021Z\"\n    }\n  ],\n  \"total\": 5427\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d083c1ea-2d63-4df6-80a8-165d4cfe624b",
+          "name": "Get Settlement Details",
+          "request": {
+            "name": "Get Settlement Details",
+            "description": {
+              "content": "Retrieves details of a specific settlement instruction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements",
+                ":settlementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "settlementId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e786094-3981-4393-8fb1-61b0576ce958",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    ":settlementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "settlementId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settlementId\": \"string\",\n  \"nettingSessionId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"currencyPair\": \"string\",\n  \"payAmount\": 3532.5911605375873,\n  \"payCurrency\": \"string\",\n  \"receiveAmount\": 694.4417189934704,\n  \"receiveCurrency\": \"string\",\n  \"settlementDate\": \"2020-10-02\",\n  \"status\": \"Failed\",\n  \"settledAt\": \"1980-02-27T11:31:20.162Z\",\n  \"createdAt\": \"1966-04-10T21:46:54.007Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a901864-a386-4cc8-a8c2-d570df6510c7",
+              "name": "Settlement not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    ":settlementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "settlementId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/netlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "23dc3f00-9729-4480-b8cb-1a133ee8595a",
+    "name": "Traiana Harmony NetLink API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony NetLink API provides netting, settlement orchestration, and trade compression services. NetLink enables counterparties to perform on-demand intraday netting of FX transactions, pre-settlement netting for equities, and trade compression between retail brokers and executing brokers to reduce settlement risk and optimize intraday liquidity.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

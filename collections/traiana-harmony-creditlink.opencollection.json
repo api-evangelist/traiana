@@ -1,0 +1,234 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony CreditLink API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Limits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Credit Limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/credit-limits",
+            "params": [
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "assetClass",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "relationshipType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves credit limits configured across counterparty relationships including prime brokered, cleared, and bilateral arrangements."
+        },
+        {
+          "info": {
+            "name": "Create a Credit Limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/credit-limits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new credit limit for a counterparty relationship."
+        },
+        {
+          "info": {
+            "name": "Get Credit Limit Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/credit-limits/:limitId",
+            "params": [
+              {
+                "name": "limitId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific credit limit."
+        },
+        {
+          "info": {
+            "name": "Update a Credit Limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.traiana.com/creditlink/v1/credit-limits/:limitId",
+            "params": [
+              {
+                "name": "limitId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies an existing credit limit, enabling real-time adjustment of credit lines."
+        },
+        {
+          "info": {
+            "name": "Report a Limit Breach",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/credit-limits/:limitId/breach",
+            "params": [
+              {
+                "name": "limitId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reports a credit limit breach, triggering notifications and optional trading termination."
+        },
+        {
+          "info": {
+            "name": "List Credit Limit Breaches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/breaches",
+            "params": [
+              {
+                "name": "limitId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a history of credit limit breaches with details on actions taken."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Designation Notices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Designation Notices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/designation-notices",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves designation notices managed through CreditLink's Designation Notice Manager (DNM)."
+        },
+        {
+          "info": {
+            "name": "Create a Designation Notice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/designation-notices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new designation notice for clearing relationships."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Utilization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Credit Utilization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/utilization",
+            "params": [
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "assetClass",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves real-time credit utilization across counterparty relationships and asset classes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

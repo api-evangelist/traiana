@@ -1,0 +1,1206 @@
+{
+  "item": [
+    {
+      "id": "7485b68f-d34c-4f31-80a8-327fba47e969",
+      "name": "Credit Limits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ffe754fb-2f17-4cdb-bdfa-da911a13d2c3",
+          "name": "List Credit Limits",
+          "request": {
+            "name": "List Credit Limits",
+            "description": {
+              "content": "Retrieves credit limits configured across counterparty relationships including prime brokered, cleared, and bilateral arrangements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credit-limits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "assetClass",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "relationshipType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d00a5438-8988-4686-86f4-8db5c9c72af6",
+              "name": "Successful response with credit limits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetClass",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relationshipType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"creditLimits\": [\n    {\n      \"limitId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"counterpartyName\": \"string\",\n      \"assetClass\": \"ETD\",\n      \"relationshipType\": \"PrimeBrokered\",\n      \"limitAmount\": 2909.8696113079036,\n      \"currency\": \"string\",\n      \"currentUtilization\": 9660.908505716518,\n      \"utilizationPercentage\": 4563.5593093877405,\n      \"status\": \"Suspended\",\n      \"effectiveDate\": \"1991-04-04\",\n      \"expiryDate\": \"1995-11-26\",\n      \"createdAt\": \"1958-04-06T07:37:58.919Z\",\n      \"updatedAt\": \"1978-05-15T06:46:41.440Z\"\n    },\n    {\n      \"limitId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"counterpartyName\": \"string\",\n      \"assetClass\": \"IRD\",\n      \"relationshipType\": \"PrimeBrokered\",\n      \"limitAmount\": 9229.778478711904,\n      \"currency\": \"string\",\n      \"currentUtilization\": 7256.385040353413,\n      \"utilizationPercentage\": 7845.40923663039,\n      \"status\": \"Terminated\",\n      \"effectiveDate\": \"2005-05-03\",\n      \"expiryDate\": \"1959-09-16\",\n      \"createdAt\": \"1987-11-06T02:20:23.256Z\",\n      \"updatedAt\": \"2020-03-26T16:10:09.293Z\"\n    }\n  ],\n  \"total\": 8474\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94c25856-4186-4097-b927-aadbb5b440dd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetClass",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relationshipType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da3d0a89-ca14-4a48-9b60-f4ca8b0d0ac1",
+          "name": "Create a Credit Limit",
+          "request": {
+            "name": "Create a Credit Limit",
+            "description": {
+              "content": "Creates a new credit limit for a counterparty relationship.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credit-limits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"counterpartyId\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"relationshipType\": \"<string>\",\n  \"limitAmount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"expiryDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9da08a68-72f1-49a9-8f74-b1409be1f58b",
+              "name": "Credit limit created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyId\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"relationshipType\": \"<string>\",\n  \"limitAmount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"expiryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limitId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"counterpartyName\": \"string\",\n  \"assetClass\": \"IRD\",\n  \"relationshipType\": \"Cleared\",\n  \"limitAmount\": 6324.307206594341,\n  \"currency\": \"string\",\n  \"currentUtilization\": 1442.2744624681516,\n  \"utilizationPercentage\": 8824.7639812226,\n  \"status\": \"Suspended\",\n  \"effectiveDate\": \"1995-11-03\",\n  \"expiryDate\": \"1999-01-20\",\n  \"createdAt\": \"1962-06-24T10:30:43.196Z\",\n  \"updatedAt\": \"2007-09-29T12:14:52.093Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb21e959-041d-478d-8823-e3dc27b83409",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyId\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"relationshipType\": \"<string>\",\n  \"limitAmount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"expiryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79280a90-a554-42fc-a8d3-8f7470a43de0",
+          "name": "Get Credit Limit Details",
+          "request": {
+            "name": "Get Credit Limit Details",
+            "description": {
+              "content": "Retrieves details of a specific credit limit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credit-limits",
+                ":limitId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "limitId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53866de0-dac0-4730-a048-13a3dcab45a3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits",
+                    ":limitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "limitId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limitId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"counterpartyName\": \"string\",\n  \"assetClass\": \"IRD\",\n  \"relationshipType\": \"Cleared\",\n  \"limitAmount\": 6324.307206594341,\n  \"currency\": \"string\",\n  \"currentUtilization\": 1442.2744624681516,\n  \"utilizationPercentage\": 8824.7639812226,\n  \"status\": \"Suspended\",\n  \"effectiveDate\": \"1995-11-03\",\n  \"expiryDate\": \"1999-01-20\",\n  \"createdAt\": \"1962-06-24T10:30:43.196Z\",\n  \"updatedAt\": \"2007-09-29T12:14:52.093Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d213a71f-c5c9-462f-a426-d95fad4e2df0",
+              "name": "Credit limit not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits",
+                    ":limitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "limitId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea919eed-f4aa-42ff-a5e7-b70416c34154",
+          "name": "Update a Credit Limit",
+          "request": {
+            "name": "Update a Credit Limit",
+            "description": {
+              "content": "Modifies an existing credit limit, enabling real-time adjustment of credit lines.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credit-limits",
+                ":limitId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "limitId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limitAmount\": \"<number>\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4494b3ed-1c38-4ef2-bee1-d818effcf16a",
+              "name": "Credit limit updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits",
+                    ":limitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "limitId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limitAmount\": \"<number>\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limitId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"counterpartyName\": \"string\",\n  \"assetClass\": \"IRD\",\n  \"relationshipType\": \"Cleared\",\n  \"limitAmount\": 6324.307206594341,\n  \"currency\": \"string\",\n  \"currentUtilization\": 1442.2744624681516,\n  \"utilizationPercentage\": 8824.7639812226,\n  \"status\": \"Suspended\",\n  \"effectiveDate\": \"1995-11-03\",\n  \"expiryDate\": \"1999-01-20\",\n  \"createdAt\": \"1962-06-24T10:30:43.196Z\",\n  \"updatedAt\": \"2007-09-29T12:14:52.093Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c06a7ec-21f4-4e84-8069-bab8320d23c6",
+              "name": "Credit limit not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits",
+                    ":limitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "limitId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limitAmount\": \"<number>\",\n  \"status\": \"<string>\",\n  \"expiryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "815f4ca6-2c2c-4ed2-8d1a-6c1f77342ce4",
+          "name": "Report a Limit Breach",
+          "request": {
+            "name": "Report a Limit Breach",
+            "description": {
+              "content": "Reports a credit limit breach, triggering notifications and optional trading termination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credit-limits",
+                ":limitId",
+                "breach"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "limitId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"breachAmount\": \"<number>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2bc846e1-db44-40f8-a438-66332aa6a1bc",
+              "name": "Breach reported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit-limits",
+                    ":limitId",
+                    "breach"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "limitId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"breachAmount\": \"<number>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"breachId\": \"string\",\n  \"limitId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"breachAmount\": 5912.50713533553,\n  \"limitAmount\": 1022.9884193221084,\n  \"utilizationAtBreach\": 15.330301199981688,\n  \"action\": \"Notify\",\n  \"resolvedAt\": \"1962-06-11T10:01:15.261Z\",\n  \"createdAt\": \"2000-06-08T02:57:06.713Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58408e37-6969-4e88-a872-977aef159d9d",
+          "name": "List Credit Limit Breaches",
+          "request": {
+            "name": "List Credit Limit Breaches",
+            "description": {
+              "content": "Retrieves a history of credit limit breaches with details on actions taken.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "breaches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limitId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64b389f4-e069-4f86-b67b-634ce8081480",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "breaches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limitId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"breaches\": [\n    {\n      \"breachId\": \"string\",\n      \"limitId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"breachAmount\": 4257.80457208728,\n      \"limitAmount\": 3370.264797489716,\n      \"utilizationAtBreach\": 4672.709211340895,\n      \"action\": \"TerminateTrading\",\n      \"resolvedAt\": \"2015-04-29T22:13:08.763Z\",\n      \"createdAt\": \"1999-04-21T21:58:51.073Z\"\n    },\n    {\n      \"breachId\": \"string\",\n      \"limitId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"breachAmount\": 3715.368557167138,\n      \"limitAmount\": 917.3967517723003,\n      \"utilizationAtBreach\": 4710.794805543835,\n      \"action\": \"SuspendTrading\",\n      \"resolvedAt\": \"2016-04-11T00:08:56.563Z\",\n      \"createdAt\": \"1983-05-04T00:47:36.825Z\"\n    }\n  ],\n  \"total\": 5032\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "43532c48-d82d-4a18-922a-f1e2a2b934a7",
+      "name": "Designation Notices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9b72469-f584-40b0-89b9-504343c7f552",
+          "name": "List Designation Notices",
+          "request": {
+            "name": "List Designation Notices",
+            "description": {
+              "content": "Retrieves designation notices managed through CreditLink's Designation Notice Manager (DNM).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "designation-notices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f799b22d-ee19-4253-b855-30f56e80c7b6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "designation-notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"designationNotices\": [\n    {\n      \"noticeId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"clearingMemberId\": \"string\",\n      \"clearingHouse\": \"string\",\n      \"assetClass\": \"string\",\n      \"status\": \"Active\",\n      \"effectiveDate\": \"2025-06-08\",\n      \"expiryDate\": \"1960-11-12\",\n      \"createdAt\": \"2011-02-16T10:05:41.240Z\"\n    },\n    {\n      \"noticeId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"clearingMemberId\": \"string\",\n      \"clearingHouse\": \"string\",\n      \"assetClass\": \"string\",\n      \"status\": \"Expired\",\n      \"effectiveDate\": \"2022-05-17\",\n      \"expiryDate\": \"1951-05-23\",\n      \"createdAt\": \"2020-01-26T16:31:21.501Z\"\n    }\n  ],\n  \"total\": 6348\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4ac4886-82f1-4b5f-8c38-13358e64ac20",
+          "name": "Create a Designation Notice",
+          "request": {
+            "name": "Create a Designation Notice",
+            "description": {
+              "content": "Creates a new designation notice for clearing relationships.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "designation-notices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"counterpartyId\": \"<string>\",\n  \"clearingMemberId\": \"<string>\",\n  \"clearingHouse\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"expiryDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ec6d662-95b3-46ca-b27e-260bd6b088f4",
+              "name": "Designation notice created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "designation-notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyId\": \"<string>\",\n  \"clearingMemberId\": \"<string>\",\n  \"clearingHouse\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"expiryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"noticeId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"clearingMemberId\": \"string\",\n  \"clearingHouse\": \"string\",\n  \"assetClass\": \"string\",\n  \"status\": \"Expired\",\n  \"effectiveDate\": \"1952-06-02\",\n  \"expiryDate\": \"2009-11-05\",\n  \"createdAt\": \"2017-08-02T23:46:27.070Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ffb9b29b-0941-4eb4-80ca-02c4c9b21750",
+      "name": "Utilization",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3baf2840-8bfc-4cf6-a9f2-09d4d2d49500",
+          "name": "Get Credit Utilization",
+          "request": {
+            "name": "Get Credit Utilization",
+            "description": {
+              "content": "Retrieves real-time credit utilization across counterparty relationships and asset classes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "utilization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "assetClass",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d02626a2-14f8-42fa-bd58-ed1b2078dd02",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "utilization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetClass",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"utilizations\": [\n    {\n      \"counterpartyId\": \"string\",\n      \"counterpartyName\": \"string\",\n      \"assetClass\": \"string\",\n      \"limitAmount\": 237.16854027263977,\n      \"currentUtilization\": 9151.488270113441,\n      \"utilizationPercentage\": 7182.953578699118,\n      \"currency\": \"string\",\n      \"lastUpdated\": \"1966-01-06T10:40:49.874Z\"\n    },\n    {\n      \"counterpartyId\": \"string\",\n      \"counterpartyName\": \"string\",\n      \"assetClass\": \"string\",\n      \"limitAmount\": 7511.161534205687,\n      \"currentUtilization\": 2264.816281926182,\n      \"utilizationPercentage\": 1970.1851970721484,\n      \"currency\": \"string\",\n      \"lastUpdated\": \"2026-05-03T19:32:43.885Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/creditlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "174c27f5-8ab1-4a78-8847-403c36868949",
+    "name": "Traiana Harmony CreditLink API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

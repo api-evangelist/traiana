@@ -1,0 +1,261 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony Trade Processing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trades",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/harmony/v1/trades",
+            "params": [
+              {
+                "name": "assetClass",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of trades processed through the Harmony network, with filtering by asset class, status, counterparty, and date range."
+        },
+        {
+          "info": {
+            "name": "Submit a Trade",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/harmony/v1/trades",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a new trade into the Harmony network for processing, matching, and confirmation."
+        },
+        {
+          "info": {
+            "name": "Get Trade Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/harmony/v1/trades/:tradeId",
+            "params": [
+              {
+                "name": "tradeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific trade."
+        },
+        {
+          "info": {
+            "name": "Confirm a Trade",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/harmony/v1/trades/:tradeId/confirm",
+            "params": [
+              {
+                "name": "tradeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Confirms a matched trade in the Harmony network."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Allocations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Allocations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/harmony/v1/allocations",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves trade allocations, including block-level and allocation-level details from executing brokers and investment managers."
+        },
+        {
+          "info": {
+            "name": "Submit an Allocation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/harmony/v1/allocations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a trade allocation for processing through the Harmony network."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Give-Ups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Give-Up Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/harmony/v1/give-ups",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "primeBrokerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "executingBrokerId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves give-up messages between prime brokers, executing brokers, and their clients processed through Harmony."
+        },
+        {
+          "info": {
+            "name": "Submit a Give-Up",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/harmony/v1/give-ups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a give-up message from an executing broker to a prime broker through the Harmony network."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Matching",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Match Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/harmony/v1/matching",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves trade matching results processed by the Harmony cross-asset matching engine."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
