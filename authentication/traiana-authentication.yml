@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/traiana-harmony-creditlink-openapi.yml, openapi/traiana-harmony-netlink-openapi.yml,
+  openapi/traiana-harmony-trade-processing-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/traiana-harmony-creditlink-openapi.yml
+  - openapi/traiana-harmony-netlink-openapi.yml
+  - openapi/traiana-harmony-trade-processing-openapi.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  sources:
+  - openapi/traiana-harmony-creditlink-openapi.yml
+  - openapi/traiana-harmony-netlink-openapi.yml
+  - openapi/traiana-harmony-trade-processing-openapi.yml
