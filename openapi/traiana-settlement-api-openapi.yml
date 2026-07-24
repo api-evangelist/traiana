@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Settlement API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Settlement
+paths:
+  /settlements:
+    get:
+      operationId: listSettlements
+      summary: List Settlement Instructions
+      description: Retrieves settlement instructions generated from netting sessions for PvP settlement orchestration.
+      tags:
+      - Settlement
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Pending
+          - Instructed
+          - Settled
+          - Failed
+      - name: counterpartyId
+        in: query
+        schema:
+          type: string
+      - name: settlementDate
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  settlements:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Settlement'
+                  total:
+                    type: integer
+  /settlements/{settlementId}:
+    get:
+      operationId: getSettlement
+      summary: Get Settlement Details
+      description: Retrieves details of a specific settlement instruction.
+      tags:
+      - Settlement
+      parameters:
+      - name: settlementId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settlement'
+        '404':
+          description: Settlement not found
+components:
+  schemas:
+    Settlement:
+      type: object
+      properties:
+        settlementId:
+          type: string
+        nettingSessionId:
+          type: string
+        counterpartyId:
+          type: string
+        currencyPair:
+          type: string
+        payAmount:
+          type: number
+        payCurrency:
+          type: string
+        receiveAmount:
+          type: number
+        receiveCurrency:
+          type: string
+        settlementDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+          - Pending
+          - Instructed
+          - Settled
+          - Failed
+        settledAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Designation Notices API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Designation Notices
+paths:
+  /designation-notices:
+    get:
+      operationId: listDesignationNotices
+      summary: List Designation Notices
+      description: Retrieves designation notices managed through CreditLink's Designation Notice Manager (DNM).
+      tags:
+      - Designation Notices
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Active
+          - Expired
+          - Revoked
+      - name: counterpartyId
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  designationNotices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DesignationNotice'
+                  total:
+                    type: integer
+    post:
+      operationId: createDesignationNotice
+      summary: Create a Designation Notice
+      description: Creates a new designation notice for clearing relationships.
+      tags:
+      - Designation Notices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DesignationNoticeCreate'
+      responses:
+        '201':
+          description: Designation notice created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DesignationNotice'
+components:
+  schemas:
+    DesignationNoticeCreate:
+      type: object
+      required:
+      - counterpartyId
+      - clearingMemberId
+      - clearingHouse
+      - assetClass
+      - effectiveDate
+      properties:
+        counterpartyId:
+          type: string
+        clearingMemberId:
+          type: string
+        clearingHouse:
+          type: string
+        assetClass:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+    DesignationNotice:
+      type: object
+      properties:
+        noticeId:
+          type: string
+        counterpartyId:
+          type: string
+        clearingMemberId:
+          type: string
+        clearingHouse:
+          type: string
+        assetClass:
+          type: string
+        status:
+          type: string
+          enum:
+          - Active
+          - Expired
+          - Revoked
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

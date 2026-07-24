@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Matching API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Matching
+paths:
+  /matching:
+    get:
+      operationId: listMatchResults
+      summary: List Match Results
+      description: Retrieves trade matching results processed by the Harmony cross-asset matching engine.
+      tags:
+      - Matching
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Matched
+          - Unmatched
+          - PartialMatch
+          - Disputed
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successful response with matching results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matchResults:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MatchResult'
+                  total:
+                    type: integer
+components:
+  schemas:
+    MatchResult:
+      type: object
+      properties:
+        matchId:
+          type: string
+        tradeIdA:
+          type: string
+        tradeIdB:
+          type: string
+        status:
+          type: string
+          enum:
+          - Matched
+          - Unmatched
+          - PartialMatch
+          - Disputed
+        matchedFields:
+          type: array
+          items:
+            type: string
+        unmatchedFields:
+          type: array
+          items:
+            type: string
+        matchedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

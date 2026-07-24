@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Give-Ups API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Give-Ups
+paths:
+  /give-ups:
+    get:
+      operationId: listGiveUps
+      summary: List Give-Up Messages
+      description: Retrieves give-up messages between prime brokers, executing brokers, and their clients processed through Harmony.
+      tags:
+      - Give-Ups
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Pending
+          - Accepted
+          - Rejected
+      - name: primeBrokerId
+        in: query
+        schema:
+          type: string
+      - name: executingBrokerId
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with give-up messages
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  giveUps:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GiveUp'
+                  total:
+                    type: integer
+    post:
+      operationId: submitGiveUp
+      summary: Submit a Give-Up
+      description: Submits a give-up message from an executing broker to a prime broker through the Harmony network.
+      tags:
+      - Give-Ups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GiveUpSubmission'
+      responses:
+        '201':
+          description: Give-up submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GiveUp'
+        '400':
+          description: Invalid give-up submission
+components:
+  schemas:
+    GiveUpSubmission:
+      type: object
+      required:
+      - tradeId
+      - executingBrokerId
+      - primeBrokerId
+      - clientId
+      - instrument
+      - side
+      - quantity
+      - price
+      - currency
+      properties:
+        tradeId:
+          type: string
+        executingBrokerId:
+          type: string
+        primeBrokerId:
+          type: string
+        clientId:
+          type: string
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+    GiveUp:
+      type: object
+      properties:
+        giveUpId:
+          type: string
+        tradeId:
+          type: string
+        executingBrokerId:
+          type: string
+        primeBrokerId:
+          type: string
+        clientId:
+          type: string
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - Pending
+          - Accepted
+          - Rejected
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

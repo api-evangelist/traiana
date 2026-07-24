@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Utilization API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Utilization
+paths:
+  /utilization:
+    get:
+      operationId: getCreditUtilization
+      summary: Get Credit Utilization
+      description: Retrieves real-time credit utilization across counterparty relationships and asset classes.
+      tags:
+      - Utilization
+      parameters:
+      - name: counterpartyId
+        in: query
+        schema:
+          type: string
+      - name: assetClass
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  utilizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CreditUtilization'
+components:
+  schemas:
+    CreditUtilization:
+      type: object
+      properties:
+        counterpartyId:
+          type: string
+        counterpartyName:
+          type: string
+        assetClass:
+          type: string
+        limitAmount:
+          type: number
+        currentUtilization:
+          type: number
+        utilizationPercentage:
+          type: number
+        currency:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

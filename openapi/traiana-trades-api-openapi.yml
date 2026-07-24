@@ -1,0 +1,271 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Trades API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Trades
+paths:
+  /trades:
+    get:
+      operationId: listTrades
+      summary: List Trades
+      description: Retrieves a list of trades processed through the Harmony network, with filtering by asset class, status, counterparty, and date range.
+      tags:
+      - Trades
+      parameters:
+      - name: assetClass
+        in: query
+        schema:
+          type: string
+          enum:
+          - FX
+          - Equities
+          - EquityDerivatives
+          - ETD
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Pending
+          - Matched
+          - Confirmed
+          - Rejected
+          - Cancelled
+      - name: counterpartyId
+        in: query
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response with list of trades
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trades:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Trade'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      operationId: submitTrade
+      summary: Submit a Trade
+      description: Submits a new trade into the Harmony network for processing, matching, and confirmation.
+      tags:
+      - Trades
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TradeSubmission'
+      responses:
+        '201':
+          description: Trade submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+        '400':
+          description: Invalid trade submission
+        '401':
+          description: Unauthorized
+  /trades/{tradeId}:
+    get:
+      operationId: getTrade
+      summary: Get Trade Details
+      description: Retrieves detailed information about a specific trade.
+      tags:
+      - Trades
+      parameters:
+      - name: tradeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with trade details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+        '404':
+          description: Trade not found
+  /trades/{tradeId}/confirm:
+    post:
+      operationId: confirmTrade
+      summary: Confirm a Trade
+      description: Confirms a matched trade in the Harmony network.
+      tags:
+      - Trades
+      parameters:
+      - name: tradeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Trade confirmed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+        '404':
+          description: Trade not found
+        '409':
+          description: Trade cannot be confirmed in current state
+components:
+  schemas:
+    TradeSubmission:
+      type: object
+      required:
+      - assetClass
+      - instrument
+      - side
+      - quantity
+      - price
+      - currency
+      - counterpartyId
+      - tradeDate
+      properties:
+        externalTradeId:
+          type: string
+        assetClass:
+          type: string
+          enum:
+          - FX
+          - Equities
+          - EquityDerivatives
+          - ETD
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        counterpartyId:
+          type: string
+        executingBrokerId:
+          type: string
+        primeBrokerId:
+          type: string
+        tradeDate:
+          type: string
+          format: date
+        settlementDate:
+          type: string
+          format: date
+    Trade:
+      type: object
+      properties:
+        tradeId:
+          type: string
+        externalTradeId:
+          type: string
+        assetClass:
+          type: string
+          enum:
+          - FX
+          - Equities
+          - EquityDerivatives
+          - ETD
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        counterpartyId:
+          type: string
+        executingBrokerId:
+          type: string
+        primeBrokerId:
+          type: string
+        tradeDate:
+          type: string
+          format: date
+        settlementDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+          - Pending
+          - Matched
+          - Confirmed
+          - Rejected
+          - Cancelled
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Compression API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Compression
+paths:
+  /compression-runs:
+    get:
+      operationId: listCompressionRuns
+      summary: List Compression Runs
+      description: Retrieves trade compression runs that aggregate trades for each currency pair at user-defined intervals.
+      tags:
+      - Compression
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Scheduled
+          - InProgress
+          - Completed
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  compressionRuns:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CompressionRun'
+                  total:
+                    type: integer
+    post:
+      operationId: createCompressionRun
+      summary: Create a Compression Run
+      description: Initiates a trade compression run to aggregate trades by currency pair.
+      tags:
+      - Compression
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompressionRunCreate'
+      responses:
+        '201':
+          description: Compression run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompressionRun'
+components:
+  schemas:
+    CompressionRunCreate:
+      type: object
+      required:
+      - counterpartyIdA
+      - counterpartyIdB
+      - intervalMinutes
+      properties:
+        counterpartyIdA:
+          type: string
+        counterpartyIdB:
+          type: string
+        intervalMinutes:
+          type: integer
+        currencyPairs:
+          type: array
+          items:
+            type: string
+    CompressionRun:
+      type: object
+      properties:
+        runId:
+          type: string
+        counterpartyIdA:
+          type: string
+        counterpartyIdB:
+          type: string
+        status:
+          type: string
+          enum:
+          - Scheduled
+          - InProgress
+          - Completed
+        intervalMinutes:
+          type: integer
+          description: User-defined compression interval in minutes
+        currencyPairs:
+          type: array
+          items:
+            type: string
+        originalTradeCount:
+          type: integer
+        compressedTradeCount:
+          type: integer
+        scheduledAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

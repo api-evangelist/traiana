@@ -1,0 +1,230 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations Netting API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Netting
+paths:
+  /netting-sessions:
+    get:
+      operationId: listNettingSessions
+      summary: List Netting Sessions
+      description: Retrieves netting sessions including on-demand intraday netting runs and scheduled pre-settlement netting cycles.
+      tags:
+      - Netting
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Pending
+          - InProgress
+          - Completed
+          - Failed
+      - name: counterpartyId
+        in: query
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nettingSessions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NettingSession'
+                  total:
+                    type: integer
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createNettingSession
+      summary: Create a Netting Session
+      description: Initiates an on-demand netting session to aggregate and compress trades between counterparties.
+      tags:
+      - Netting
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NettingSessionCreate'
+      responses:
+        '201':
+          description: Netting session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NettingSession'
+        '400':
+          description: Invalid request
+  /netting-sessions/{sessionId}:
+    get:
+      operationId: getNettingSession
+      summary: Get Netting Session Details
+      description: Retrieves details of a specific netting session including results.
+      tags:
+      - Netting
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NettingSession'
+        '404':
+          description: Netting session not found
+  /netting-sessions/{sessionId}/results:
+    get:
+      operationId: getNettingResults
+      summary: Get Netting Results
+      description: Retrieves the compressed trade results from a completed netting session.
+      tags:
+      - Netting
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessionId:
+                    type: string
+                  netResults:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NetResult'
+                  originalTradeCount:
+                    type: integer
+                  nettedTradeCount:
+                    type: integer
+                  compressionRatio:
+                    type: number
+components:
+  schemas:
+    NettingSessionCreate:
+      type: object
+      required:
+      - counterpartyIdA
+      - counterpartyIdB
+      - assetClass
+      properties:
+        counterpartyIdA:
+          type: string
+        counterpartyIdB:
+          type: string
+        assetClass:
+          type: string
+        currencyPairs:
+          type: array
+          items:
+            type: string
+        fromDate:
+          type: string
+          format: date
+        toDate:
+          type: string
+          format: date
+    NetResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+        currencyPair:
+          type: string
+        netAmount:
+          type: number
+        direction:
+          type: string
+          enum:
+          - Pay
+          - Receive
+        originalTradeIds:
+          type: array
+          items:
+            type: string
+        settlementDate:
+          type: string
+          format: date
+    NettingSession:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        counterpartyIdA:
+          type: string
+        counterpartyIdB:
+          type: string
+        assetClass:
+          type: string
+        status:
+          type: string
+          enum:
+          - Pending
+          - InProgress
+          - Completed
+          - Failed
+        originalTradeCount:
+          type: integer
+        nettedTradeCount:
+          type: integer
+        compressionRatio:
+          type: number
+        scheduledAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key

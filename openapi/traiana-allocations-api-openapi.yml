@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Traiana Harmony CreditLink Allocations API
+  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  version: 1.0.0
+  contact:
+    name: Traiana (CME Group)
+    url: https://www.cmegroup.com/services/traiana.html
+  license:
+    name: Proprietary
+servers:
+- url: https://api.traiana.com/creditlink/v1
+  description: Traiana CreditLink Production
+security:
+- bearerAuth: []
+- apiKey: []
+tags:
+- name: Allocations
+paths:
+  /allocations:
+    get:
+      operationId: listAllocations
+      summary: List Allocations
+      description: Retrieves trade allocations, including block-level and allocation-level details from executing brokers and investment managers.
+      tags:
+      - Allocations
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Pending
+          - Affirmed
+          - Confirmed
+          - Rejected
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Successful response with allocations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allocations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Allocation'
+                  total:
+                    type: integer
+    post:
+      operationId: submitAllocation
+      summary: Submit an Allocation
+      description: Submits a trade allocation for processing through the Harmony network.
+      tags:
+      - Allocations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AllocationSubmission'
+      responses:
+        '201':
+          description: Allocation submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Allocation'
+        '400':
+          description: Invalid allocation
+components:
+  schemas:
+    Allocation:
+      type: object
+      properties:
+        allocationId:
+          type: string
+        blockTradeId:
+          type: string
+        accountId:
+          type: string
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - Pending
+          - Affirmed
+          - Confirmed
+          - Rejected
+        createdAt:
+          type: string
+          format: date-time
+    AllocationSubmission:
+      type: object
+      required:
+      - blockTradeId
+      - accountId
+      - instrument
+      - side
+      - quantity
+      - price
+      - currency
+      properties:
+        blockTradeId:
+          type: string
+        accountId:
+          type: string
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
