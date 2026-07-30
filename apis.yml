@@ -1,78 +1,256 @@
 aid: traiana
 url: https://raw.githubusercontent.com/api-evangelist/traiana/refs/heads/main/apis.yml
 apis:
-  - aid: traiana:harmony-trade-processing
-    name: Traiana Harmony Trade Processing API
-    tags:
-      - Fintech
-      - Foreign Exchange
-      - Post-Trade Processing
-      - Trade Matching
-    humanURL: https://www.cmegroup.com/services/traiana.html
-    properties:
-      - url: https://www.cmegroup.com/services/traiana.html
-        type: Documentation
-      - url: openapi/traiana-harmony-trade-processing-openapi.yml
-        type: OpenAPI
-      - url: json-schema/trade.json
-        type: JSONSchema
-      - url: json-schema/allocation.json
-        type: JSONSchema
-      - url: json-schema/give-up.json
-        type: JSONSchema
-      - url: json-ld/traiana-context.jsonld
-        type: JSONLD
-    description: >-
-      The Traiana Harmony Trade Processing API provides cross-asset post-trade processing capabilities through the
-      Harmony network. It enables automated trade allocation, matching, confirmation, give-up messaging, and reporting
-      across FX, equities, equity derivatives, and exchange-traded derivatives. Harmony connects over 1,000 firms and
-      supports 15,000 cross-asset trading relationships, handling $2 trillion in daily transaction volume.
-  - aid: traiana:harmony-creditlink
-    name: Traiana Harmony CreditLink API
-    tags:
-      - Credit Risk
-      - Fintech
-      - Foreign Exchange
-      - Risk Management
-    humanURL: https://www.cmegroup.com/services/traiana.html
-    properties:
-      - url: https://www.cmegroup.com/services/traiana.html
-        type: Documentation
-      - url: openapi/traiana-harmony-creditlink-openapi.yml
-        type: OpenAPI
-      - url: json-schema/credit-limit.json
-        type: JSONSchema
-      - url: json-ld/traiana-context.jsonld
-        type: JSONLD
-    description: >-
-      The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across
-      prime-brokered, cleared, and bilateral relationships. CreditLink is composed of the Designation Notice Manager
-      (DNM), Tri-Party Limit Manager (TPL), and ECN Limit Manager (ELM), enabling limit monitoring, breach detection,
-      credit line modification, and trading termination in real time through integration with exchange APIs.
-  - aid: traiana:harmony-netlink
-    name: Traiana Harmony NetLink API
-    tags:
-      - Fintech
-      - Netting
-      - Settlement
-      - Trade Compression
-    humanURL: https://www.cmegroup.com/services/traiana.html
-    properties:
-      - url: https://www.cmegroup.com/services/traiana.html
-        type: Documentation
-      - url: openapi/traiana-harmony-netlink-openapi.yml
-        type: OpenAPI
-      - url: json-schema/netting-session.json
-        type: JSONSchema
-      - url: json-schema/settlement.json
-        type: JSONSchema
-      - url: json-ld/traiana-context.jsonld
-        type: JSONLD
-    description: >-
-      The Traiana Harmony NetLink API provides netting, settlement orchestration, and trade compression services.
-      NetLink enables counterparties to perform on-demand intraday netting of FX transactions, pre-settlement netting
-      for equities, and trade compression between retail brokers and executing brokers. It reduces settlement risk and
-      optimizes intraday liquidity through PvP settlement orchestration, including same-day settlement.
+- aid: traiana:traiana-allocations-api
+  name: Traiana Allocations API
+  description: The Allocations API from Traiana — 1 operation(s) for allocations.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Allocations
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-allocations-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-compression-api
+  name: Traiana Compression API
+  description: The Compression API from Traiana — 1 operation(s) for compression.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Compression
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-compression-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-credit-limits-api
+  name: Traiana Credit Limits API
+  description: The Credit Limits API from Traiana — 4 operation(s) for credit limits.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Credit Limits
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-credit-limits-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-designation-notices-api
+  name: Traiana Designation Notices API
+  description: The Designation Notices API from Traiana — 1 operation(s) for designation notices.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Designation Notices
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-designation-notices-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-give-ups-api
+  name: Traiana Give-Ups API
+  description: The Give-Ups API from Traiana — 1 operation(s) for give-ups.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Give-Ups
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-give-ups-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-matching-api
+  name: Traiana Matching API
+  description: The Matching API from Traiana — 1 operation(s) for matching.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Matching
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-matching-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-netting-api
+  name: Traiana Netting API
+  description: The Netting API from Traiana — 3 operation(s) for netting.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Netting
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-netting-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-settlement-api
+  name: Traiana Settlement API
+  description: The Settlement API from Traiana — 2 operation(s) for settlement.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Settlement
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-settlement-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-trades-api
+  name: Traiana Trades API
+  description: The Trades API from Traiana — 3 operation(s) for trades.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Trades
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-trades-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
+- aid: traiana:traiana-utilization-api
+  name: Traiana Utilization API
+  description: The Utilization API from Traiana — 1 operation(s) for utilization.
+  humanURL: https://www.cmegroup.com/services/traiana.html
+  tags:
+  - Utilization
+  properties:
+  - type: OpenAPI
+    url: openapi/traiana-utilization-api-openapi.yml
+  - type: Documentation
+    url: https://www.cmegroup.com/services/traiana.html
+  - type: JSONSchema
+    url: json-schema/trade.json
+  - type: JSONSchema
+    url: json-schema/allocation.json
+  - type: JSONSchema
+    url: json-schema/give-up.json
+  - type: JSONLD
+    url: json-ld/traiana-context.jsonld
+  - type: JSONSchema
+    url: json-schema/credit-limit.json
+  - type: JSONSchema
+    url: json-schema/netting-session.json
+  - type: JSONSchema
+    url: json-schema/settlement.json
 name: Traiana
 tags:
   - Fintech
@@ -80,7 +258,20 @@ tags:
   - Post-Trade Processing
   - Risk Management
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/traiana.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
