@@ -1,0 +1,32 @@
+{
+  "provider": "traiana",
+  "sources": [
+    "traiana-allocations-api-openapi.yml",
+    "traiana-compression-api-openapi.yml",
+    "traiana-credit-limits-api-openapi.yml",
+    "traiana-designation-notices-api-openapi.yml",
+    "traiana-give-ups-api-openapi.yml",
+    "traiana-matching-api-openapi.yml",
+    "traiana-netting-api-openapi.yml",
+    "traiana-settlement-api-openapi.yml",
+    "traiana-trades-api-openapi.yml",
+    "traiana-utilization-api-openapi.yml"
+  ],
+  "outputs": [
+    "traiana-allocations-api-openapi.yml",
+    "traiana-compression-api-openapi.yml",
+    "traiana-credit-limits-api-openapi.yml",
+    "traiana-designation-notices-api-openapi.yml",
+    "traiana-give-ups-api-openapi.yml",
+    "traiana-matching-api-openapi.yml",
+    "traiana-netting-api-openapi.yml",
+    "traiana-settlement-api-openapi.yml",
+    "traiana-trades-api-openapi.yml",
+    "traiana-utilization-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
