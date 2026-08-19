@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "2a99b78c-877a-4b49-ada7-aadfd30b250f",
+      "name": "Designation Notices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7a4e6d1-d4c5-4328-bf74-708f12b49ae0",
+          "name": "List Designation Notices",
+          "request": {
+            "name": "List Designation Notices",
+            "description": {
+              "content": "Retrieves designation notices managed through CreditLink's Designation Notice Manager (DNM).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "designation-notices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa4b5e08-51ef-493c-8936-fdb9cb40a961",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "designation-notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"designationNotices\": [\n    {\n      \"noticeId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"clearingMemberId\": \"string\",\n      \"clearingHouse\": \"string\",\n      \"assetClass\": \"string\",\n      \"status\": \"Revoked\",\n      \"effectiveDate\": \"2014-07-14\",\n      \"expiryDate\": \"2022-11-24\",\n      \"createdAt\": \"2025-09-09T03:37:37.245Z\"\n    },\n    {\n      \"noticeId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"clearingMemberId\": \"string\",\n      \"clearingHouse\": \"string\",\n      \"assetClass\": \"string\",\n      \"status\": \"Revoked\",\n      \"effectiveDate\": \"1989-03-02\",\n      \"expiryDate\": \"1958-10-20\",\n      \"createdAt\": \"2007-02-17T05:31:11.289Z\"\n    }\n  ],\n  \"total\": 9475\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a68dadc9-d295-47c2-b174-b612523167e3",
+          "name": "Create a Designation Notice",
+          "request": {
+            "name": "Create a Designation Notice",
+            "description": {
+              "content": "Creates a new designation notice for clearing relationships.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "designation-notices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"counterpartyId\": \"<string>\",\n  \"clearingMemberId\": \"<string>\",\n  \"clearingHouse\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"expiryDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3bd936a8-14b2-472e-bbeb-b01a7fdf82a0",
+              "name": "Designation notice created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "designation-notices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyId\": \"<string>\",\n  \"clearingMemberId\": \"<string>\",\n  \"clearingHouse\": \"<string>\",\n  \"assetClass\": \"<string>\",\n  \"effectiveDate\": \"<date>\",\n  \"expiryDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"noticeId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"clearingMemberId\": \"string\",\n  \"clearingHouse\": \"string\",\n  \"assetClass\": \"string\",\n  \"status\": \"Expired\",\n  \"effectiveDate\": \"1971-06-30\",\n  \"expiryDate\": \"1985-12-06\",\n  \"createdAt\": \"2006-05-21T13:53:36.790Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/creditlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "71d001d3-eab3-46be-8033-62f47f8aaeee",
+    "name": "Traiana Harmony CreditLink Allocations Designation Notices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

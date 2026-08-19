@@ -1,0 +1,292 @@
+{
+  "item": [
+    {
+      "id": "1ac8c6d8-0ccc-4177-8ad0-fdf640c2ad30",
+      "name": "Settlement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c0d4dcc-0741-4fb1-9511-0eb9508cff77",
+          "name": "List Settlement Instructions",
+          "request": {
+            "name": "List Settlement Instructions",
+            "description": {
+              "content": "Retrieves settlement instructions generated from netting sessions for PvP settlement orchestration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "settlementDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "babecc47-c984-4fe4-ac0d-f2d3067f5988",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "settlementDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settlements\": [\n    {\n      \"settlementId\": \"string\",\n      \"nettingSessionId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"currencyPair\": \"string\",\n      \"payAmount\": 4307.391056063803,\n      \"payCurrency\": \"string\",\n      \"receiveAmount\": 594.1998330643039,\n      \"receiveCurrency\": \"string\",\n      \"settlementDate\": \"1948-08-10\",\n      \"status\": \"Instructed\",\n      \"settledAt\": \"1974-11-06T09:47:38.003Z\",\n      \"createdAt\": \"2022-11-24T12:45:48.182Z\"\n    },\n    {\n      \"settlementId\": \"string\",\n      \"nettingSessionId\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"currencyPair\": \"string\",\n      \"payAmount\": 4452.979200990632,\n      \"payCurrency\": \"string\",\n      \"receiveAmount\": 6059.541847799569,\n      \"receiveCurrency\": \"string\",\n      \"settlementDate\": \"2004-08-18\",\n      \"status\": \"Pending\",\n      \"settledAt\": \"2016-10-31T08:10:11.293Z\",\n      \"createdAt\": \"1952-12-05T11:33:57.784Z\"\n    }\n  ],\n  \"total\": 1299\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e065914-70dc-41b1-bb74-d4ebc915fb53",
+          "name": "Get Settlement Details",
+          "request": {
+            "name": "Get Settlement Details",
+            "description": {
+              "content": "Retrieves details of a specific settlement instruction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "settlements",
+                ":settlementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "settlementId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a378c9df-5a5d-4ecd-9428-d175483b5be6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    ":settlementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "settlementId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settlementId\": \"string\",\n  \"nettingSessionId\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"currencyPair\": \"string\",\n  \"payAmount\": 1472.1498628063778,\n  \"payCurrency\": \"string\",\n  \"receiveAmount\": 9841.34899201474,\n  \"receiveCurrency\": \"string\",\n  \"settlementDate\": \"1984-12-01\",\n  \"status\": \"Settled\",\n  \"settledAt\": \"2010-08-26T10:40:29.828Z\",\n  \"createdAt\": \"1995-01-22T15:29:02.838Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c4c087f-0583-4b02-b5cd-9e7c505ffe36",
+              "name": "Settlement not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlements",
+                    ":settlementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "settlementId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/creditlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc17d00a-1c7c-4a46-b998-18b4bfba715e",
+    "name": "Traiana Harmony CreditLink Allocations Settlement API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

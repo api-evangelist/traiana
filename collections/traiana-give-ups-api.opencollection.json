@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony CreditLink Allocations Give-Ups API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Give-Ups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Give-Up Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/give-ups",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "primeBrokerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "executingBrokerId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves give-up messages between prime brokers, executing brokers, and their clients processed through Harmony."
+        },
+        {
+          "info": {
+            "name": "Submit a Give-Up",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/give-ups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a give-up message from an executing broker to a prime broker through the Harmony network."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

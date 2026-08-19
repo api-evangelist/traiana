@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "c6d1c61b-0ef1-4173-93dd-1b9a8a95840e",
+      "name": "Compression",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ee00cca-1037-4994-a464-eb5996d0d56f",
+          "name": "List Compression Runs",
+          "request": {
+            "name": "List Compression Runs",
+            "description": {
+              "content": "Retrieves trade compression runs that aggregate trades for each currency pair at user-defined intervals.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compression-runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e63db34-0ae3-423e-b9b4-2c9c425047c0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compression-runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"compressionRuns\": [\n    {\n      \"runId\": \"string\",\n      \"counterpartyIdA\": \"string\",\n      \"counterpartyIdB\": \"string\",\n      \"status\": \"Completed\",\n      \"intervalMinutes\": 4856,\n      \"currencyPairs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"originalTradeCount\": 9096,\n      \"compressedTradeCount\": 6506,\n      \"scheduledAt\": \"2025-04-24T00:08:38.080Z\",\n      \"completedAt\": \"1982-08-06T02:13:48.045Z\"\n    },\n    {\n      \"runId\": \"string\",\n      \"counterpartyIdA\": \"string\",\n      \"counterpartyIdB\": \"string\",\n      \"status\": \"Scheduled\",\n      \"intervalMinutes\": 2019,\n      \"currencyPairs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"originalTradeCount\": 5628,\n      \"compressedTradeCount\": 816,\n      \"scheduledAt\": \"1949-11-01T05:38:00.054Z\",\n      \"completedAt\": \"1986-10-22T22:55:22.723Z\"\n    }\n  ],\n  \"total\": 2569\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d550f20f-7285-40e7-a7ec-777015bbec0f",
+          "name": "Create a Compression Run",
+          "request": {
+            "name": "Create a Compression Run",
+            "description": {
+              "content": "Initiates a trade compression run to aggregate trades by currency pair.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compression-runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"counterpartyIdA\": \"<string>\",\n  \"counterpartyIdB\": \"<string>\",\n  \"intervalMinutes\": \"<integer>\",\n  \"currencyPairs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc953996-80f0-406c-89b1-96b7fce63930",
+              "name": "Compression run created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compression-runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"counterpartyIdA\": \"<string>\",\n  \"counterpartyIdB\": \"<string>\",\n  \"intervalMinutes\": \"<integer>\",\n  \"currencyPairs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"runId\": \"string\",\n  \"counterpartyIdA\": \"string\",\n  \"counterpartyIdB\": \"string\",\n  \"status\": \"Completed\",\n  \"intervalMinutes\": 2709,\n  \"currencyPairs\": [\n    \"string\",\n    \"string\"\n  ],\n  \"originalTradeCount\": 2298,\n  \"compressedTradeCount\": 1444,\n  \"scheduledAt\": \"1967-10-15T22:09:02.376Z\",\n  \"completedAt\": \"1982-04-10T23:46:20.167Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/creditlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9121e2ae-c6fb-4dd3-9d6c-50a5d0bdf944",
+    "name": "Traiana Harmony CreditLink Allocations Compression API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

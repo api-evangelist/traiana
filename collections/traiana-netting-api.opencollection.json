@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony CreditLink Allocations Netting API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Netting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Netting Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/netting-sessions",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves netting sessions including on-demand intraday netting runs and scheduled pre-settlement netting cycles."
+        },
+        {
+          "info": {
+            "name": "Create a Netting Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/netting-sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates an on-demand netting session to aggregate and compress trades between counterparties."
+        },
+        {
+          "info": {
+            "name": "Get Netting Session Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/netting-sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific netting session including results."
+        },
+        {
+          "info": {
+            "name": "Get Netting Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/netting-sessions/:sessionId/results",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the compressed trade results from a completed netting session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

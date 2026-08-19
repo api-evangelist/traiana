@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony CreditLink Allocations Settlement API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settlement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Settlement Instructions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/settlements",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "settlementDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves settlement instructions generated from netting sessions for PvP settlement orchestration."
+        },
+        {
+          "info": {
+            "name": "Get Settlement Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/settlements/:settlementId",
+            "params": [
+              {
+                "name": "settlementId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific settlement instruction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

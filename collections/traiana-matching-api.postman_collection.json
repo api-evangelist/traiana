@@ -1,0 +1,148 @@
+{
+  "item": [
+    {
+      "id": "ab5e5920-86d7-4064-98d6-142e880c681e",
+      "name": "Matching",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7bc79557-fa17-4bef-8433-19d189af2790",
+          "name": "List Match Results",
+          "request": {
+            "name": "List Match Results",
+            "description": {
+              "content": "Retrieves trade matching results processed by the Harmony cross-asset matching engine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "matching"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27e9de74-1d1c-43a8-8dfd-be09be792cf1",
+              "name": "Successful response with matching results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "matching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matchResults\": [\n    {\n      \"matchId\": \"string\",\n      \"tradeIdA\": \"string\",\n      \"tradeIdB\": \"string\",\n      \"status\": \"Unmatched\",\n      \"matchedFields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"unmatchedFields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"matchedAt\": \"1988-12-24T23:40:31.000Z\"\n    },\n    {\n      \"matchId\": \"string\",\n      \"tradeIdA\": \"string\",\n      \"tradeIdB\": \"string\",\n      \"status\": \"PartialMatch\",\n      \"matchedFields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"unmatchedFields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"matchedAt\": \"2022-12-05T13:41:02.832Z\"\n    }\n  ],\n  \"total\": 193\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/creditlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "124002c7-5ea0-4a1b-b40b-61b1d9755fbe",
+    "name": "Traiana Harmony CreditLink Allocations Matching API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

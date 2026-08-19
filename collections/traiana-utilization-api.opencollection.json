@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony CreditLink Allocations Utilization API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utilization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Credit Utilization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/utilization",
+            "params": [
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "assetClass",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves real-time credit utilization across counterparty relationships and asset classes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

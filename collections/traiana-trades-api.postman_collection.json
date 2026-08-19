@@ -1,0 +1,853 @@
+{
+  "item": [
+    {
+      "id": "5df55c36-99b9-4e99-a832-b6beced41ebf",
+      "name": "Trades",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "930328d3-cc30-4bb8-9ed4-2b924800dcf9",
+          "name": "List Trades",
+          "request": {
+            "name": "List Trades",
+            "description": {
+              "content": "Retrieves a list of trades processed through the Harmony network, with filtering by asset class, status, counterparty, and date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assetClass",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "counterpartyId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1eda92a9-4c9e-4701-9a54-62857550ee7f",
+              "name": "Successful response with list of trades",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetClass",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trades\": [\n    {\n      \"tradeId\": \"string\",\n      \"externalTradeId\": \"string\",\n      \"assetClass\": \"Equities\",\n      \"instrument\": \"string\",\n      \"side\": \"Sell\",\n      \"quantity\": 1948.7784793253848,\n      \"price\": 9774.50545670381,\n      \"currency\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"executingBrokerId\": \"string\",\n      \"primeBrokerId\": \"string\",\n      \"tradeDate\": \"1976-10-25\",\n      \"settlementDate\": \"1992-06-27\",\n      \"status\": \"Pending\",\n      \"createdAt\": \"1981-05-09T00:04:46.151Z\",\n      \"updatedAt\": \"1980-06-13T15:27:26.110Z\"\n    },\n    {\n      \"tradeId\": \"string\",\n      \"externalTradeId\": \"string\",\n      \"assetClass\": \"FX\",\n      \"instrument\": \"string\",\n      \"side\": \"Sell\",\n      \"quantity\": 5721.275214146381,\n      \"price\": 5628.089336670952,\n      \"currency\": \"string\",\n      \"counterpartyId\": \"string\",\n      \"executingBrokerId\": \"string\",\n      \"primeBrokerId\": \"string\",\n      \"tradeDate\": \"2011-03-22\",\n      \"settlementDate\": \"1950-02-19\",\n      \"status\": \"Confirmed\",\n      \"createdAt\": \"1984-10-04T02:38:01.873Z\",\n      \"updatedAt\": \"1949-06-02T15:38:23.727Z\"\n    }\n  ],\n  \"total\": 654,\n  \"limit\": 5930,\n  \"offset\": 8551\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cad55dec-1374-4bcf-8755-d632e26a1a8e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetClass",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8618d991-8ea0-4ea4-9d3e-1efd6e1b1b18",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetClass",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "counterpartyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d2293f5-29fe-4323-8616-d6035ed53156",
+          "name": "Submit a Trade",
+          "request": {
+            "name": "Submit a Trade",
+            "description": {
+              "content": "Submits a new trade into the Harmony network for processing, matching, and confirmation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assetClass\": \"<string>\",\n  \"instrument\": \"<string>\",\n  \"side\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"counterpartyId\": \"<string>\",\n  \"tradeDate\": \"<date>\",\n  \"externalTradeId\": \"<string>\",\n  \"executingBrokerId\": \"<string>\",\n  \"primeBrokerId\": \"<string>\",\n  \"settlementDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1ae3f37-6be1-41dd-b105-e77a044dd01a",
+              "name": "Trade submitted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetClass\": \"<string>\",\n  \"instrument\": \"<string>\",\n  \"side\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"counterpartyId\": \"<string>\",\n  \"tradeDate\": \"<date>\",\n  \"externalTradeId\": \"<string>\",\n  \"executingBrokerId\": \"<string>\",\n  \"primeBrokerId\": \"<string>\",\n  \"settlementDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tradeId\": \"string\",\n  \"externalTradeId\": \"string\",\n  \"assetClass\": \"EquityDerivatives\",\n  \"instrument\": \"string\",\n  \"side\": \"Sell\",\n  \"quantity\": 9968.762730039327,\n  \"price\": 820.1620723708547,\n  \"currency\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"executingBrokerId\": \"string\",\n  \"primeBrokerId\": \"string\",\n  \"tradeDate\": \"2013-04-29\",\n  \"settlementDate\": \"1974-12-29\",\n  \"status\": \"Pending\",\n  \"createdAt\": \"1982-02-25T00:10:13.460Z\",\n  \"updatedAt\": \"1959-02-24T00:15:00.479Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a778d8b9-4f6a-4580-8cae-47faf9cbff26",
+              "name": "Invalid trade submission",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetClass\": \"<string>\",\n  \"instrument\": \"<string>\",\n  \"side\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"counterpartyId\": \"<string>\",\n  \"tradeDate\": \"<date>\",\n  \"externalTradeId\": \"<string>\",\n  \"executingBrokerId\": \"<string>\",\n  \"primeBrokerId\": \"<string>\",\n  \"settlementDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5176466-590d-4cfc-bff0-20cf3bc890c4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetClass\": \"<string>\",\n  \"instrument\": \"<string>\",\n  \"side\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"counterpartyId\": \"<string>\",\n  \"tradeDate\": \"<date>\",\n  \"externalTradeId\": \"<string>\",\n  \"executingBrokerId\": \"<string>\",\n  \"primeBrokerId\": \"<string>\",\n  \"settlementDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed84df4d-1d1b-4664-b37d-8c4e1ec5e64a",
+          "name": "Get Trade Details",
+          "request": {
+            "name": "Get Trade Details",
+            "description": {
+              "content": "Retrieves detailed information about a specific trade.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trades",
+                ":tradeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tradeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "980cd84a-1429-4fc1-b06b-7496d7829983",
+              "name": "Successful response with trade details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":tradeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tradeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tradeId\": \"string\",\n  \"externalTradeId\": \"string\",\n  \"assetClass\": \"EquityDerivatives\",\n  \"instrument\": \"string\",\n  \"side\": \"Sell\",\n  \"quantity\": 9968.762730039327,\n  \"price\": 820.1620723708547,\n  \"currency\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"executingBrokerId\": \"string\",\n  \"primeBrokerId\": \"string\",\n  \"tradeDate\": \"2013-04-29\",\n  \"settlementDate\": \"1974-12-29\",\n  \"status\": \"Pending\",\n  \"createdAt\": \"1982-02-25T00:10:13.460Z\",\n  \"updatedAt\": \"1959-02-24T00:15:00.479Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3559a15-bcb6-4578-b63b-e589e240e52d",
+              "name": "Trade not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":tradeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tradeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76c0384a-2879-4517-b8d2-d101c22aef22",
+          "name": "Confirm a Trade",
+          "request": {
+            "name": "Confirm a Trade",
+            "description": {
+              "content": "Confirms a matched trade in the Harmony network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trades",
+                ":tradeId",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tradeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72b3c558-35de-47c4-969f-e37c9c6f1b0e",
+              "name": "Trade confirmed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":tradeId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tradeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tradeId\": \"string\",\n  \"externalTradeId\": \"string\",\n  \"assetClass\": \"EquityDerivatives\",\n  \"instrument\": \"string\",\n  \"side\": \"Sell\",\n  \"quantity\": 9968.762730039327,\n  \"price\": 820.1620723708547,\n  \"currency\": \"string\",\n  \"counterpartyId\": \"string\",\n  \"executingBrokerId\": \"string\",\n  \"primeBrokerId\": \"string\",\n  \"tradeDate\": \"2013-04-29\",\n  \"settlementDate\": \"1974-12-29\",\n  \"status\": \"Pending\",\n  \"createdAt\": \"1982-02-25T00:10:13.460Z\",\n  \"updatedAt\": \"1959-02-24T00:15:00.479Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c454f6bd-6646-4e6d-9d24-ae5b8fbf74ad",
+              "name": "Trade not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":tradeId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tradeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41fdf33f-2358-43c0-a681-b1e5988a7f24",
+              "name": "Trade cannot be confirmed in current state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    ":tradeId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tradeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/creditlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c5dc8df9-7620-4d2c-bc22-3b35943e6459",
+    "name": "Traiana Harmony CreditLink Allocations Trades API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "item": [
+    {
+      "id": "fc2bacd1-cb50-4210-81b0-a5959f851a4c",
+      "name": "Give-Ups",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b551822e-976e-4e5d-88b6-ca9429dbea29",
+          "name": "List Give-Up Messages",
+          "request": {
+            "name": "List Give-Up Messages",
+            "description": {
+              "content": "Retrieves give-up messages between prime brokers, executing brokers, and their clients processed through Harmony.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "give-ups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "primeBrokerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "executingBrokerId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "874cc757-2844-41d1-a17e-9c2f8779ce7d",
+              "name": "Successful response with give-up messages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "give-ups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "primeBrokerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executingBrokerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"giveUps\": [\n    {\n      \"giveUpId\": \"string\",\n      \"tradeId\": \"string\",\n      \"executingBrokerId\": \"string\",\n      \"primeBrokerId\": \"string\",\n      \"clientId\": \"string\",\n      \"instrument\": \"string\",\n      \"side\": \"Buy\",\n      \"quantity\": 5383.498435300817,\n      \"price\": 3774.1864219845525,\n      \"currency\": \"string\",\n      \"status\": \"Rejected\",\n      \"createdAt\": \"1967-05-26T03:08:50.159Z\"\n    },\n    {\n      \"giveUpId\": \"string\",\n      \"tradeId\": \"string\",\n      \"executingBrokerId\": \"string\",\n      \"primeBrokerId\": \"string\",\n      \"clientId\": \"string\",\n      \"instrument\": \"string\",\n      \"side\": \"Buy\",\n      \"quantity\": 4713.184203097093,\n      \"price\": 5179.671232186407,\n      \"currency\": \"string\",\n      \"status\": \"Accepted\",\n      \"createdAt\": \"1961-05-21T17:19:25.084Z\"\n    }\n  ],\n  \"total\": 4162\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "278dacd2-5052-4ddb-aceb-919fb30fcb43",
+          "name": "Submit a Give-Up",
+          "request": {
+            "name": "Submit a Give-Up",
+            "description": {
+              "content": "Submits a give-up message from an executing broker to a prime broker through the Harmony network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "give-ups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tradeId\": \"<string>\",\n  \"executingBrokerId\": \"<string>\",\n  \"primeBrokerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"instrument\": \"<string>\",\n  \"side\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ceb1e35c-fd83-4ea7-9aa0-9e68449317fb",
+              "name": "Give-up submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "give-ups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tradeId\": \"<string>\",\n  \"executingBrokerId\": \"<string>\",\n  \"primeBrokerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"instrument\": \"<string>\",\n  \"side\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"giveUpId\": \"string\",\n  \"tradeId\": \"string\",\n  \"executingBrokerId\": \"string\",\n  \"primeBrokerId\": \"string\",\n  \"clientId\": \"string\",\n  \"instrument\": \"string\",\n  \"side\": \"Buy\",\n  \"quantity\": 8693.932146499184,\n  \"price\": 9802.93738785469,\n  \"currency\": \"string\",\n  \"status\": \"Accepted\",\n  \"createdAt\": \"1954-05-26T20:41:40.157Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aca2cada-bd74-40c6-af26-7c81fa7108b9",
+              "name": "Invalid give-up submission",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "give-ups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tradeId\": \"<string>\",\n  \"executingBrokerId\": \"<string>\",\n  \"primeBrokerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"instrument\": \"<string>\",\n  \"side\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.traiana.com/creditlink/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8636e6c0-94b8-4208-a452-545652eed332",
+    "name": "Traiana Harmony CreditLink Allocations Give-Ups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.\n\nContact Support:\n Name: Traiana (CME Group)",
+      "type": "text/plain"
+    }
+  }
+}

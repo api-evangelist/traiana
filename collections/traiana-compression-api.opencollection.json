@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony CreditLink Allocations Compression API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compression",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Compression Runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/compression-runs",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves trade compression runs that aggregate trades for each currency pair at user-defined intervals."
+        },
+        {
+          "info": {
+            "name": "Create a Compression Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/compression-runs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a trade compression run to aggregate trades by currency pair."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

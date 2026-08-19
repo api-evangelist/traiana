@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Traiana Harmony CreditLink Allocations Trades API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trades",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/trades",
+            "params": [
+              {
+                "name": "assetClass",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "counterpartyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of trades processed through the Harmony network, with filtering by asset class, status, counterparty, and date range."
+        },
+        {
+          "info": {
+            "name": "Submit a Trade",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/trades",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a new trade into the Harmony network for processing, matching, and confirmation."
+        },
+        {
+          "info": {
+            "name": "Get Trade Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.traiana.com/creditlink/v1/trades/:tradeId",
+            "params": [
+              {
+                "name": "tradeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific trade."
+        },
+        {
+          "info": {
+            "name": "Confirm a Trade",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.traiana.com/creditlink/v1/trades/:tradeId/confirm",
+            "params": [
+              {
+                "name": "tradeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Confirms a matched trade in the Harmony network."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
