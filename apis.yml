@@ -271,16 +271,17 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: enterprise
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Enterprise · Self-serve signup
-  confidence: high
+  label: Enterprise
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/traiana.png
 access: 3rd-Party
@@ -313,7 +314,7 @@ common:
     url: vocabulary/traiana-vocabulary.yml
 created: '2025-01-01'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 description: >-
   Traiana, part of CME Group and now operating under OSTTRA, is a leading market infrastructure technology provider
   offering pre-trade risk monitoring and automated post-trade processing for listed and OTC trading. Its Harmony network
