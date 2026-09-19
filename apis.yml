@@ -206,6 +206,8 @@ apis:
   description: The Trades API from Traiana — 3 operation(s) for trades.
   humanURL: https://www.cmegroup.com/services/traiana.html
   tags:
+  - Trade
+  tags_raw:
   - Trades
   properties:
   - type: OpenAPI
