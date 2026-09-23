@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Traiana Harmony CreditLink Allocations Netting API
-  description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
+  title: Traiana Harmony NetLink Netting API
+  description: The Traiana Harmony NetLink API provides netting, settlement orchestration, and trade compression services. NetLink enables counterparties to perform on-demand intraday netting of FX transactions, pre-settlement netting for equities, and trade compression between retail brokers and executing brokers to reduce settlement risk and optimize intraday liquidity.
   version: 1.0.0
   contact:
     name: Traiana (CME Group)
@@ -9,8 +9,8 @@ info:
   license:
     name: Proprietary
 servers:
-- url: https://api.traiana.com/creditlink/v1
-  description: Traiana CreditLink Production
+- url: https://api.traiana.com/netlink/v1
+  description: Traiana NetLink Production
 security:
 - bearerAuth: []
 - apiKey: []
@@ -165,27 +165,6 @@ components:
         toDate:
           type: string
           format: date
-    NetResult:
-      type: object
-      properties:
-        resultId:
-          type: string
-        currencyPair:
-          type: string
-        netAmount:
-          type: number
-        direction:
-          type: string
-          enum:
-          - Pay
-          - Receive
-        originalTradeIds:
-          type: array
-          items:
-            type: string
-        settlementDate:
-          type: string
-          format: date
     NettingSession:
       type: object
       properties:
@@ -219,6 +198,27 @@ components:
         createdAt:
           type: string
           format: date-time
+    NetResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+        currencyPair:
+          type: string
+        netAmount:
+          type: number
+        direction:
+          type: string
+          enum:
+          - Pay
+          - Receive
+        originalTradeIds:
+          type: array
+          items:
+            type: string
+        settlementDate:
+          type: string
+          format: date
   securitySchemes:
     bearerAuth:
       type: http

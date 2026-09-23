@@ -1,32 +1,42 @@
 {
   "provider": "traiana",
   "sources": [
-    "traiana-allocations-api-openapi.yml",
-    "traiana-compression-api-openapi.yml",
-    "traiana-credit-limits-api-openapi.yml",
-    "traiana-designation-notices-api-openapi.yml",
-    "traiana-give-ups-api-openapi.yml",
-    "traiana-matching-api-openapi.yml",
-    "traiana-netting-api-openapi.yml",
-    "traiana-settlement-api-openapi.yml",
-    "traiana-trades-api-openapi.yml",
-    "traiana-utilization-api-openapi.yml"
+    "_original/traiana-harmony-creditlink-openapi.yml",
+    "_original/traiana-harmony-netlink-openapi.yml",
+    "_original/traiana-harmony-trade-processing-openapi.yml"
   ],
   "outputs": [
-    "traiana-allocations-api-openapi.yml",
-    "traiana-compression-api-openapi.yml",
     "traiana-credit-limits-api-openapi.yml",
     "traiana-designation-notices-api-openapi.yml",
-    "traiana-give-ups-api-openapi.yml",
-    "traiana-matching-api-openapi.yml",
+    "traiana-utilization-api-openapi.yml",
+    "traiana-compression-api-openapi.yml",
     "traiana-netting-api-openapi.yml",
     "traiana-settlement-api-openapi.yml",
-    "traiana-trades-api-openapi.yml",
-    "traiana-utilization-api-openapi.yml"
+    "traiana-allocations-api-openapi.yml",
+    "traiana-give-ups-api-openapi.yml",
+    "traiana-matching-api-openapi.yml",
+    "traiana-trades-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "traiana-harmony-creditlink-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "traiana-harmony-netlink-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "traiana-harmony-trade-processing-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "traiana-allocations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-compression-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-credit-limits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-designation-notices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-give-ups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-matching-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-netting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-settlement-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-trades-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "traiana-utilization-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

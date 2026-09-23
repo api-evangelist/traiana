@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Traiana Harmony CreditLink Allocations Credit Limits API
+  title: Traiana Harmony CreditLink Credit Limits API
   description: The Traiana Harmony CreditLink API provides real-time pre-trade and post-trade credit risk management across prime-brokered, cleared, and bilateral relationships. CreditLink enables limit monitoring, designation notice management, tri-party limit management, and ECN limit management. It integrates with exchange APIs to identify limit breaches, modify credit lines, and terminate trading activity in real time.
   version: 1.0.0
   contact:
@@ -197,42 +197,49 @@ paths:
                     type: integer
 components:
   schemas:
-    CreditLimitCreate:
+    Breach:
       type: object
-      required:
-      - counterpartyId
-      - assetClass
-      - relationshipType
-      - limitAmount
-      - currency
-      - effectiveDate
       properties:
+        breachId:
+          type: string
+        limitId:
+          type: string
         counterpartyId:
           type: string
-        assetClass:
-          type: string
-          enum:
-          - FX
-          - Equities
-          - EquityDerivatives
-          - ETD
-          - IRD
-        relationshipType:
-          type: string
-          enum:
-          - PrimeBrokered
-          - Cleared
-          - Bilateral
+        breachAmount:
+          type: number
         limitAmount:
           type: number
-        currency:
+        utilizationAtBreach:
+          type: number
+        action:
           type: string
-        effectiveDate:
+          enum:
+          - Notify
+          - SuspendTrading
+          - TerminateTrading
+        resolvedAt:
           type: string
-          format: date
-        expiryDate:
+          format: date-time
+        createdAt:
           type: string
-          format: date
+          format: date-time
+    BreachReport:
+      type: object
+      required:
+      - breachAmount
+      - action
+      properties:
+        breachAmount:
+          type: number
+        description:
+          type: string
+        action:
+          type: string
+          enum:
+          - Notify
+          - SuspendTrading
+          - TerminateTrading
     CreditLimit:
       type: object
       properties:
@@ -282,49 +289,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    BreachReport:
-      type: object
-      required:
-      - breachAmount
-      - action
-      properties:
-        breachAmount:
-          type: number
-        description:
-          type: string
-        action:
-          type: string
-          enum:
-          - Notify
-          - SuspendTrading
-          - TerminateTrading
-    Breach:
-      type: object
-      properties:
-        breachId:
-          type: string
-        limitId:
-          type: string
-        counterpartyId:
-          type: string
-        breachAmount:
-          type: number
-        limitAmount:
-          type: number
-        utilizationAtBreach:
-          type: number
-        action:
-          type: string
-          enum:
-          - Notify
-          - SuspendTrading
-          - TerminateTrading
-        resolvedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
     CreditLimitUpdate:
       type: object
       properties:
@@ -336,6 +300,42 @@ components:
           - Active
           - Suspended
           - Terminated
+        expiryDate:
+          type: string
+          format: date
+    CreditLimitCreate:
+      type: object
+      required:
+      - counterpartyId
+      - assetClass
+      - relationshipType
+      - limitAmount
+      - currency
+      - effectiveDate
+      properties:
+        counterpartyId:
+          type: string
+        assetClass:
+          type: string
+          enum:
+          - FX
+          - Equities
+          - EquityDerivatives
+          - ETD
+          - IRD
+        relationshipType:
+          type: string
+          enum:
+          - PrimeBrokered
+          - Cleared
+          - Bilateral
+        limitAmount:
+          type: number
+        currency:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
         expiryDate:
           type: string
           format: date
