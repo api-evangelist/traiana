@@ -197,49 +197,42 @@ paths:
                     type: integer
 components:
   schemas:
-    Breach:
-      type: object
-      properties:
-        breachId:
-          type: string
-        limitId:
-          type: string
-        counterpartyId:
-          type: string
-        breachAmount:
-          type: number
-        limitAmount:
-          type: number
-        utilizationAtBreach:
-          type: number
-        action:
-          type: string
-          enum:
-          - Notify
-          - SuspendTrading
-          - TerminateTrading
-        resolvedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-    BreachReport:
+    CreditLimitCreate:
       type: object
       required:
-      - breachAmount
-      - action
+      - counterpartyId
+      - assetClass
+      - relationshipType
+      - limitAmount
+      - currency
+      - effectiveDate
       properties:
-        breachAmount:
-          type: number
-        description:
+        counterpartyId:
           type: string
-        action:
+        assetClass:
           type: string
           enum:
-          - Notify
-          - SuspendTrading
-          - TerminateTrading
+          - FX
+          - Equities
+          - EquityDerivatives
+          - ETD
+          - IRD
+        relationshipType:
+          type: string
+          enum:
+          - PrimeBrokered
+          - Cleared
+          - Bilateral
+        limitAmount:
+          type: number
+        currency:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
     CreditLimit:
       type: object
       properties:
@@ -289,6 +282,22 @@ components:
         updatedAt:
           type: string
           format: date-time
+    BreachReport:
+      type: object
+      required:
+      - breachAmount
+      - action
+      properties:
+        breachAmount:
+          type: number
+        description:
+          type: string
+        action:
+          type: string
+          enum:
+          - Notify
+          - SuspendTrading
+          - TerminateTrading
     CreditLimitUpdate:
       type: object
       properties:
@@ -303,42 +312,33 @@ components:
         expiryDate:
           type: string
           format: date
-    CreditLimitCreate:
+    Breach:
       type: object
-      required:
-      - counterpartyId
-      - assetClass
-      - relationshipType
-      - limitAmount
-      - currency
-      - effectiveDate
       properties:
+        breachId:
+          type: string
+        limitId:
+          type: string
         counterpartyId:
           type: string
-        assetClass:
-          type: string
-          enum:
-          - FX
-          - Equities
-          - EquityDerivatives
-          - ETD
-          - IRD
-        relationshipType:
-          type: string
-          enum:
-          - PrimeBrokered
-          - Cleared
-          - Bilateral
+        breachAmount:
+          type: number
         limitAmount:
           type: number
-        currency:
+        utilizationAtBreach:
+          type: number
+        action:
           type: string
-        effectiveDate:
+          enum:
+          - Notify
+          - SuspendTrading
+          - TerminateTrading
+        resolvedAt:
           type: string
-          format: date
-        expiryDate:
+          format: date-time
+        createdAt:
           type: string
-          format: date
+          format: date-time
   securitySchemes:
     bearerAuth:
       type: http

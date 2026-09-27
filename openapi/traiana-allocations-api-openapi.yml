@@ -81,6 +81,34 @@ paths:
           description: Invalid allocation
 components:
   schemas:
+    AllocationSubmission:
+      type: object
+      required:
+      - blockTradeId
+      - accountId
+      - instrument
+      - side
+      - quantity
+      - price
+      - currency
+      properties:
+        blockTradeId:
+          type: string
+        accountId:
+          type: string
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
     Allocation:
       type: object
       properties:
@@ -113,34 +141,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    AllocationSubmission:
-      type: object
-      required:
-      - blockTradeId
-      - accountId
-      - instrument
-      - side
-      - quantity
-      - price
-      - currency
-      properties:
-        blockTradeId:
-          type: string
-        accountId:
-          type: string
-        instrument:
-          type: string
-        side:
-          type: string
-          enum:
-          - Buy
-          - Sell
-        quantity:
-          type: number
-        price:
-          type: number
-        currency:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

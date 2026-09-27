@@ -142,6 +142,27 @@ paths:
                     type: number
 components:
   schemas:
+    NetResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+        currencyPair:
+          type: string
+        netAmount:
+          type: number
+        direction:
+          type: string
+          enum:
+          - Pay
+          - Receive
+        originalTradeIds:
+          type: array
+          items:
+            type: string
+        settlementDate:
+          type: string
+          format: date
     NettingSessionCreate:
       type: object
       required:
@@ -198,27 +219,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    NetResult:
-      type: object
-      properties:
-        resultId:
-          type: string
-        currencyPair:
-          type: string
-        netAmount:
-          type: number
-        direction:
-          type: string
-          enum:
-          - Pay
-          - Receive
-        originalTradeIds:
-          type: array
-          items:
-            type: string
-        settlementDate:
-          type: string
-          format: date
   securitySchemes:
     bearerAuth:
       type: http
