@@ -197,42 +197,22 @@ paths:
                     type: integer
 components:
   schemas:
-    CreditLimitCreate:
+    BreachReport:
       type: object
       required:
-      - counterpartyId
-      - assetClass
-      - relationshipType
-      - limitAmount
-      - currency
-      - effectiveDate
+      - breachAmount
+      - action
       properties:
-        counterpartyId:
-          type: string
-        assetClass:
-          type: string
-          enum:
-          - FX
-          - Equities
-          - EquityDerivatives
-          - ETD
-          - IRD
-        relationshipType:
-          type: string
-          enum:
-          - PrimeBrokered
-          - Cleared
-          - Bilateral
-        limitAmount:
+        breachAmount:
           type: number
-        currency:
+        description:
           type: string
-        effectiveDate:
+        action:
           type: string
-          format: date
-        expiryDate:
-          type: string
-          format: date
+          enum:
+          - Notify
+          - SuspendTrading
+          - TerminateTrading
     CreditLimit:
       type: object
       properties:
@@ -282,36 +262,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    BreachReport:
-      type: object
-      required:
-      - breachAmount
-      - action
-      properties:
-        breachAmount:
-          type: number
-        description:
-          type: string
-        action:
-          type: string
-          enum:
-          - Notify
-          - SuspendTrading
-          - TerminateTrading
-    CreditLimitUpdate:
-      type: object
-      properties:
-        limitAmount:
-          type: number
-        status:
-          type: string
-          enum:
-          - Active
-          - Suspended
-          - Terminated
-        expiryDate:
-          type: string
-          format: date
     Breach:
       type: object
       properties:
@@ -339,6 +289,56 @@ components:
         createdAt:
           type: string
           format: date-time
+    CreditLimitCreate:
+      type: object
+      required:
+      - counterpartyId
+      - assetClass
+      - relationshipType
+      - limitAmount
+      - currency
+      - effectiveDate
+      properties:
+        counterpartyId:
+          type: string
+        assetClass:
+          type: string
+          enum:
+          - FX
+          - Equities
+          - EquityDerivatives
+          - ETD
+          - IRD
+        relationshipType:
+          type: string
+          enum:
+          - PrimeBrokered
+          - Cleared
+          - Bilateral
+        limitAmount:
+          type: number
+        currency:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
+    CreditLimitUpdate:
+      type: object
+      properties:
+        limitAmount:
+          type: number
+        status:
+          type: string
+          enum:
+          - Active
+          - Suspended
+          - Terminated
+        expiryDate:
+          type: string
+          format: date
   securitySchemes:
     bearerAuth:
       type: http

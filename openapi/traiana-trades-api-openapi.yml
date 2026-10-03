@@ -161,6 +161,52 @@ paths:
           description: Trade cannot be confirmed in current state
 components:
   schemas:
+    TradeSubmission:
+      type: object
+      required:
+      - assetClass
+      - instrument
+      - side
+      - quantity
+      - price
+      - currency
+      - counterpartyId
+      - tradeDate
+      properties:
+        externalTradeId:
+          type: string
+        assetClass:
+          type: string
+          enum:
+          - FX
+          - Equities
+          - EquityDerivatives
+          - ETD
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
+        counterpartyId:
+          type: string
+        executingBrokerId:
+          type: string
+        primeBrokerId:
+          type: string
+        tradeDate:
+          type: string
+          format: date
+        settlementDate:
+          type: string
+          format: date
     Trade:
       type: object
       properties:
@@ -214,52 +260,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    TradeSubmission:
-      type: object
-      required:
-      - assetClass
-      - instrument
-      - side
-      - quantity
-      - price
-      - currency
-      - counterpartyId
-      - tradeDate
-      properties:
-        externalTradeId:
-          type: string
-        assetClass:
-          type: string
-          enum:
-          - FX
-          - Equities
-          - EquityDerivatives
-          - ETD
-        instrument:
-          type: string
-        side:
-          type: string
-          enum:
-          - Buy
-          - Sell
-        quantity:
-          type: number
-        price:
-          type: number
-        currency:
-          type: string
-        counterpartyId:
-          type: string
-        executingBrokerId:
-          type: string
-        primeBrokerId:
-          type: string
-        tradeDate:
-          type: string
-          format: date
-        settlementDate:
-          type: string
-          format: date
   securitySchemes:
     bearerAuth:
       type: http

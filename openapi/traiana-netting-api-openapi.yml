@@ -142,27 +142,6 @@ paths:
                     type: number
 components:
   schemas:
-    NetResult:
-      type: object
-      properties:
-        resultId:
-          type: string
-        currencyPair:
-          type: string
-        netAmount:
-          type: number
-        direction:
-          type: string
-          enum:
-          - Pay
-          - Receive
-        originalTradeIds:
-          type: array
-          items:
-            type: string
-        settlementDate:
-          type: string
-          format: date
     NettingSessionCreate:
       type: object
       required:
@@ -184,6 +163,27 @@ components:
           type: string
           format: date
         toDate:
+          type: string
+          format: date
+    NetResult:
+      type: object
+      properties:
+        resultId:
+          type: string
+        currencyPair:
+          type: string
+        netAmount:
+          type: number
+        direction:
+          type: string
+          enum:
+          - Pay
+          - Receive
+        originalTradeIds:
+          type: array
+          items:
+            type: string
+        settlementDate:
           type: string
           format: date
     NettingSession:
