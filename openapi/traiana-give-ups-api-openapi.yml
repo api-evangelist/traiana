@@ -78,40 +78,6 @@ paths:
           description: Invalid give-up submission
 components:
   schemas:
-    GiveUpSubmission:
-      type: object
-      required:
-      - tradeId
-      - executingBrokerId
-      - primeBrokerId
-      - clientId
-      - instrument
-      - side
-      - quantity
-      - price
-      - currency
-      properties:
-        tradeId:
-          type: string
-        executingBrokerId:
-          type: string
-        primeBrokerId:
-          type: string
-        clientId:
-          type: string
-        instrument:
-          type: string
-        side:
-          type: string
-          enum:
-          - Buy
-          - Sell
-        quantity:
-          type: number
-        price:
-          type: number
-        currency:
-          type: string
     GiveUp:
       type: object
       properties:
@@ -147,6 +113,40 @@ components:
         createdAt:
           type: string
           format: date-time
+    GiveUpSubmission:
+      type: object
+      required:
+      - tradeId
+      - executingBrokerId
+      - primeBrokerId
+      - clientId
+      - instrument
+      - side
+      - quantity
+      - price
+      - currency
+      properties:
+        tradeId:
+          type: string
+        executingBrokerId:
+          type: string
+        primeBrokerId:
+          type: string
+        clientId:
+          type: string
+        instrument:
+          type: string
+        side:
+          type: string
+          enum:
+          - Buy
+          - Sell
+        quantity:
+          type: number
+        price:
+          type: number
+        currency:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

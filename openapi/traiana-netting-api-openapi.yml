@@ -142,6 +142,39 @@ paths:
                     type: number
 components:
   schemas:
+    NettingSession:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        counterpartyIdA:
+          type: string
+        counterpartyIdB:
+          type: string
+        assetClass:
+          type: string
+        status:
+          type: string
+          enum:
+          - Pending
+          - InProgress
+          - Completed
+          - Failed
+        originalTradeCount:
+          type: integer
+        nettedTradeCount:
+          type: integer
+        compressionRatio:
+          type: number
+        scheduledAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
     NettingSessionCreate:
       type: object
       required:
@@ -186,39 +219,6 @@ components:
         settlementDate:
           type: string
           format: date
-    NettingSession:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        counterpartyIdA:
-          type: string
-        counterpartyIdB:
-          type: string
-        assetClass:
-          type: string
-        status:
-          type: string
-          enum:
-          - Pending
-          - InProgress
-          - Completed
-          - Failed
-        originalTradeCount:
-          type: integer
-        nettedTradeCount:
-          type: integer
-        compressionRatio:
-          type: number
-        scheduledAt:
-          type: string
-          format: date-time
-        completedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
   securitySchemes:
     bearerAuth:
       type: http

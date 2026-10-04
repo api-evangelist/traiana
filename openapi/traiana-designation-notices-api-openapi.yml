@@ -72,29 +72,6 @@ paths:
                 $ref: '#/components/schemas/DesignationNotice'
 components:
   schemas:
-    DesignationNoticeCreate:
-      type: object
-      required:
-      - counterpartyId
-      - clearingMemberId
-      - clearingHouse
-      - assetClass
-      - effectiveDate
-      properties:
-        counterpartyId:
-          type: string
-        clearingMemberId:
-          type: string
-        clearingHouse:
-          type: string
-        assetClass:
-          type: string
-        effectiveDate:
-          type: string
-          format: date
-        expiryDate:
-          type: string
-          format: date
     DesignationNotice:
       type: object
       properties:
@@ -123,6 +100,29 @@ components:
         createdAt:
           type: string
           format: date-time
+    DesignationNoticeCreate:
+      type: object
+      required:
+      - counterpartyId
+      - clearingMemberId
+      - clearingHouse
+      - assetClass
+      - effectiveDate
+      properties:
+        counterpartyId:
+          type: string
+        clearingMemberId:
+          type: string
+        clearingHouse:
+          type: string
+        assetClass:
+          type: string
+        effectiveDate:
+          type: string
+          format: date
+        expiryDate:
+          type: string
+          format: date
   securitySchemes:
     bearerAuth:
       type: http
