@@ -7,14 +7,17 @@ front_door_ai:
   probed_at: '2026-09-17'
   host: www.osttra.com
   final_host: osttra.com
-  ownership: inherited
+  ownership: own
   owner: traiana
   shares_host_with: null
-  inherited_from: osttra.com
+  inherited_from: null
+  alias_of: osttra.com
   verdict: scored
-  score: null
+  score: 2
+  band: 3
+  band_label: light
   host_score: 2
-  density: null
+  density: 1.03
   words: 1935
   tiers:
     agentic: 0
