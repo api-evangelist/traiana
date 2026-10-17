@@ -73,23 +73,6 @@ paths:
                 $ref: '#/components/schemas/CompressionRun'
 components:
   schemas:
-    CompressionRunCreate:
-      type: object
-      required:
-      - counterpartyIdA
-      - counterpartyIdB
-      - intervalMinutes
-      properties:
-        counterpartyIdA:
-          type: string
-        counterpartyIdB:
-          type: string
-        intervalMinutes:
-          type: integer
-        currencyPairs:
-          type: array
-          items:
-            type: string
     CompressionRun:
       type: object
       properties:
@@ -122,6 +105,23 @@ components:
         completedAt:
           type: string
           format: date-time
+    CompressionRunCreate:
+      type: object
+      required:
+      - counterpartyIdA
+      - counterpartyIdB
+      - intervalMinutes
+      properties:
+        counterpartyIdA:
+          type: string
+        counterpartyIdB:
+          type: string
+        intervalMinutes:
+          type: integer
+        currencyPairs:
+          type: array
+          items:
+            type: string
   securitySchemes:
     bearerAuth:
       type: http
